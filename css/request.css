@@ -1,0 +1,193 @@
+/*@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');*/
+
+* {
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+body {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: hsl(226.38deg 100% 38.43% / 5%);
+}
+
+
+/*FORM ELEMENTS*/
+/*===========*/
+
+
+form {
+    position: relative;
+    z-index: 5;
+    max-width: 1088px;
+    margin: 45px auto;
+    padding: 23px;
+    transition: 0.2s;
+    border-radius: 0 20px 20px 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    margin-top: 70px;
+    padding-top: 23px;
+    transition: 0.2s;
+}
+
+td.table_left {
+    width: 20%;
+}
+
+td.table_right {
+    width: 80%;
+}
+
+table td {
+    height: 8px;
+    padding: 5px;
+}
+
+form td .small_msg {
+    font-size: 0.7em;
+    font-weight: 400;
+    color: rgb(86, 86, 86);
+}
+
+span.required_star {
+    color: red;
+}
+
+input[type="text"],
+select,
+textarea,
+input[type="date"] {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    color: black;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: hsl(237.46deg 100% 98% / 30%);
+}
+
+input[type="text"]:hover,
+select:hover,
+textarea:hover,
+input[type="date"]:hover {
+    outline: 1px solid rgba(125, 162, 255, 0.3);
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus,
+input[type="date"]:focus {
+    outline: 1px solid rgba(102, 145, 255, 1);
+}
+
+input[type="date"] {
+    border: 1px solid rgba(204, 204, 204, 0);
+    background-color: hsla(210, 5%, 77%, 0.32);
+}
+
+.form_buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+button[type="submit"],
+button[type="reset"] {
+    margin: 0 5px;
+    font-weight: 500;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.2s;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    background-color: hsl(218.08deg 100% 50% / 85%);
+}
+
+button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+    transition: 0.2s;
+}
+
+.cancel_btn {
+    font-weight: 500;
+    color: black;
+    background-color: hsl(218deg 10% 68% / 65%);
+    transition: 0.2s;
+}
+
+
+button:hover {
+    background-color: #777777;
+    color: hsl(218 100% 97% / 1);
+    transition: 0.2s;
+}
+
+button[type="submit"]:hover,
+button[type="reset"]:hover {
+    background-color: hsl(223.29deg 100% 69.02%);
+    /*color: hsl(0, 0%, 0%);*/
+    transition: 0.2s;
+}
+
+
+/*RESPONSIVE*/
+/*===========*/
+
+
+@media (max-width: 1280px) {
+    form {
+        max-width: 85%;
+        padding: 23px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+}
+
+
+@media (max-width: 900px) {
+    button {
+        /*width: 65%;*/
+        /*transition: 0.2s;*/
+    }
+
+}
+
+@media (max-width: 540px) {
+    form {
+        max-width: 90%;
+        margin: 50px auto;
+        transition: 0.2s;
+        border-radius: 20px 20px 20px 20px;
+    }
+
+    td.table_right {
+        width: 70%;
+    }
+}

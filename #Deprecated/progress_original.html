@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Progress</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="../css/libraries/bootstrap.css" rel="stylesheet">
+    <script src="../js/libraries/bootstrap.bundle.js"></script>
+
+    <link href="../css/font-family.css" rel="stylesheet"/>
+    <link href="../css/headerSection.css" rel="stylesheet"/>
+    <link href="../css/progress.css" rel="stylesheet"/>
+
+
+</head>
+
+<header>
+    <div class="logoBx" onclick="window.location.href='index.html';">
+        <img alt="image" class="logo_png" src="../img/logo_placeholder.png"/>
+        <h1 class="logo_text">IT Unit <br/> Service Request Portal</h1>
+    </div>
+    <div class="help_link">
+        <a href="../help.html"><img alt="Help Icon" class="help-png" id="help-icon" src="../img/help.png"></a>
+        <a href="../help.html"><label class="help_label" for="help-icon">Help</label></a>
+    </div>
+</header>
+
+<body>
+<div class="titleBox">
+    <h1 class="title">View Progress</h1>
+</div>
+
+<div class="card-content">
+    <form action="#" class="search_form">
+        <div class="input_section">
+            <label for="searchInput">Search:</label>
+            <input id="searchInput" name="search_input" placeholder="Enter request ID" type="text">
+        </div>
+        <button id="search_btn" type="button">Search</button>
+    </form>
+
+    <div class="progress_section" id="progressSection">
+        <div class="labels" id="labels">
+            <table class="label_table" id="labelTable">
+                <tbody valign="top">
+                <tr>
+                    <td class="left">
+                        <span class="label">Request ID: <span class="value" id="valueReqId">request-id</span></span><br>
+                        <span class="label">Name: <span class="value"
+                                                        id="valueName">employee-name + (designation)</span></span><br>
+                        <span class="label">Division: <span class="value"
+                                                            id="valueDiv">employee-division</span></span><br>
+                        <span class="label">Requested Date: <span class="value"
+                                                                  id="valueDate">2001-01-01</span></span><br>
+                    </td>
+                    <td class="right">
+                        <span class="label">Repair/Service: <span class="value" id="valueServInfo">
+                            Meeting @ 1:30 2nd floor</span></span><br>
+                        <span class="label">Device type: <span class="value" id="valueDevType">
+                            dummy-device</span></span><br>
+                        <span class="label">Serial No: <span class="value" id="valueSerial">serial-no</span></span><br>
+                    </td>
+                </tr>
+                <tr></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="progress_steps" id="progressSteps">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link completed" href="#" id="req_sub_step"></a>
+                    <a class="abc" href="#">Request Submitted</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link completed" href="#" id="div_dir_step"></a>
+                    <a class="abc" href="#">Approved by Director<span
+                            style="font-size: small">(Divisional)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link declined" href="#" id="ict_dir_step"></a>
+                    <a class="abc" href="#">Approval Pending<span
+                            style="font-size: small">(ICT)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link processing" href="#" id="rep_status_step"></a>
+                    <a class="abc" href="#">Repair or Service Status</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link not-started" href="#" id="finish_step"></a>
+                    <a class="abc" href="#">Completion Status</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+    // Trigger updateProgress() when the search button is clicked
+    document.getElementById("search_btn").addEventListener("click", function () {
+        updateProgress();
+    });
+
+    function updateProgress() {
+        var requestId = document.getElementById("searchInput").value;
+        if (requestId.substring(0, 3) === "REP") {
+            tableSource = repair;
+        } else if (requestId.substring(0, 3) === "SVC") {
+            tableSource = service;
+        }
+
+        $.ajax({
+            url: 'php/fetch_progressData_original.php',
+            method: 'GET',
+            data: {request_id: requestId}, // Pass the request ID to PHP
+            dataType: 'json',
+            success: function (data) {
+                // Populate the step progress with the new data
+                document.getElementById("login_form").style.display = "flex";
+                if (data.length === 0) {
+                    // If there are no records, display a message instead of the progress
+                    $('#labelTable tbody').append('<tr><td class="empty_table">No records available</td></tr>');
+                } else {
+                    // Display the step progress based on the data fetched from the database
+                    updateStepProgress(data);
+                }
+            },
+            error: function () {
+                console.log("Failed to fetch new data");
+            }
+        });
+    }
+
+    function updateStepProgress(data) {
+        // Write logic to update the step progress based on the data
+        // You can use the data to update each step accordingly
+        // For example, for step 2 (div_dir_step):
+        if (data.approval_div_dir === 1) {
+            // Update the class and text for this step
+            document.getElementById("div_dir_step").className = "nav-link completed";
+            document.getElementById("div_dir_step").textContent = "Approved by Director";
+        } else if (data.approval_div_dir === 0) {
+            // Update the class and text for this step if declined
+            document.getElementById("div_dir_step").className = "nav-link declined";
+            document.getElementById("div_dir_step").textContent = "Declined by Director";
+        } else {
+            // Update the class and text if approval is pending
+            document.getElementById("div_dir_step").className = "nav-link approval-pending";
+            document.getElementById("div_dir_step").textContent = "Approval Pending";
+        }
+
+        // Repeat similar logic for other steps
+    }
+
+    // function noDataMessageDisplay() {
+    // }
+</script>
+
+</body>
+</html>

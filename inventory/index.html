@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Office Stationery and Inventory Request Form - IT Unit Service Request Portal - Ministry of
+        Environment</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!--    <script src="../js/main.js"></script>-->
+    <script src="../js/libraries/jquery-3.6.0.js"></script>
+    <script>
+        history.scrollRestoration = "manual";
+    </script>
+
+
+    <link href="../css/font-family.css" rel="stylesheet"/>
+    <link href="../css/headerSection.css" rel="stylesheet"/>
+    <!--    <link href="../css/request.css" rel="stylesheet">-->
+    <link href="request_item.css" rel="stylesheet">
+    <script crossorigin="anonymous" src="../js/http_kit.fontawesome.com_9ff8af40aa.js"></script>
+
+    <!-- Include SweetAlert2 -->
+    <link href="../css/libraries/sweetalert2.css" rel="stylesheet">
+    <script src="../js/libraries/sweetalert2.all.js"></script>
+
+    <style>
+        /*****TAB LAYOUT*****/
+        /*==================*/
+        .tab {
+            display: none;
+            /*margin: 130px auto 40px auto;*/
+        }
+
+        .active {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="logoBx" onclick="window.location.href='../index.html';">
+        <img alt="image" class="logo_png" src="../img/logo_placeholder.png"/>
+        <h1 class="logo_text">IT Unit <br/> Service Request Portal</h1>
+    </div>
+    <div class="help_link">
+        <a href="../help.html"><img alt="Help Icon" class="help-png" id="help-icon" src="../img/help.png"></a>
+        <a href="../help.html"><p class="help_label">Help</p></a>
+    </div>
+</header>
+
+<div class="titleBox">
+    <h1 class="title">Office Stationery and Inventory<br>Request Form</h1>
+</div>
+
+<!-- Tab content -->
+<div class="tab active" id="page1">
+    <!--    TODO : Add <label> tag to all the label texts    -->
+    <form action="" id="request_form" method="POST" name="request_form">
+
+        <!-- Code for the tab buttons -->
+        <!--        <div class="tab_bar">-->
+        <!--            <div class="tab_button active_button" onclick="showTab('page1')">Repair</div>-->
+        <!--            <div class="tab_button" onclick="showTab('page2')">Service</div>-->
+        <!--        </div>-->
+
+
+        <div class="Rqstr_details withFrame" id="requester_details">
+            <!--            <input type="date" class="current_date" id="current_date">-->
+            <span class="current_date" id="current_date"></span>
+            <table class="table_one">
+                <tbody>
+                <tr>
+                    <td class="req_detail_label" style="width: 10%">
+                        <label for="emp_name">Name with initials : </label>
+                    </td>
+                    <td style="width: 30%"><span class="required_star"> * </span>
+                        <input autofocus id="emp_name" name="emp_name" placeholder="eg:  ABC Rajasinghe" required
+                               type="text">
+                    </td>
+                    <td class="req_detail_label" style="width: 10%">
+                        <label for="emp_designation">Designation : </label>
+                    </td>
+                    <td style="width: 30%"><span class="required_star"> * </span>
+                        <input id="emp_designation" name="emp_designation" placeholder="eg:  Director" required
+                               type="text">
+                    </td>
+                    <td class="req_detail_label" style="width: 10%">
+                        <label for="emp_id">Employee ID : </label>
+                    </td>
+                    <td style="width: 30%"><span class="required_star"> * </span>
+                        <input id="emp_id" name="emp_id" placeholder="EMP001" required
+                               type="text" style="width: 85%;">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="req_detail_label" style="width: 10%">
+                        <label for="request_month">Month of requisition : </label>
+                    </td>
+                    <td style="width: 20%">
+                        <select id="request_month">
+                            <option class="disabledOption" disabled value="">-Select a month-</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </td>
+                    <td class="req_detail_label" style="width: 10%">
+                        <label for="division">Division : </label>
+                    </td>
+                    <td style="width: 25%">
+                        <span class="required_star"> * </span>
+                        <select id="division" name="emp_div" required>
+                            <option disabled selected value="">-Select your division-</option>
+                            <option value="Accounts">Accounts</option>
+                            <option value="Additional Secretary Office">Additional Secretary Office</option>
+                            <option value="Administration">Administration</option>
+                            <option value="Air Resource Management and National Ozone Unit">Air Resource Management and National Ozone Unit</option>
+                            <option value="Bio Diversity">Bio Diversity</option>
+                            <option value="Climate Change">Climate Change</option>
+                            <option value="Environment Education Training, Promotion and Special Project">Environment Education Training, Promotion and Special Project</option>
+                            <option value="Environmental Pollution Control and Chemical Management">Environmental Pollution Control and Chemical Management </option>
+                            <option value="Environmental Planning and Economic">Environmental Planning and Economic </option>
+                            <option value="Human Resource Development">Human Resource Development</option>
+                            <option value="ICT Unit">ICT Unit</option>
+                            <option value="Internal Audit">Internal Audit</option>
+                            <option value="International Relation">International Relation</option>
+                            <option value="Investigation">Investigation</option>
+                            <option value="Legal">Legal</option>
+                            <option value="Media">Media</option>
+                            <option value="Ministry Office">Ministry Office</option>
+                            <option value="Natural Resource">Natural Resource</option>
+                            <option value="Policy Planning and Monitoring">Policy Planning and Monitoring</option>
+                            <option value="Secretary Staff">Secretary Staff</option>
+                        </select>
+                    </td>
+                    <td class="req_detail_label" style="width: 10%">
+                        <label for="no_of_employees">Number of employees : </label>
+                    </td>
+                    <td style="width: 10%">
+                        <input id="no_of_employees" name="no_of_employees" placeholder="No. of Employees" required
+                               type="text">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <button tabindex="-1" id="directorTestBtn" onclick="directorView()"
+                style="width: 40%;align-self: center;margin-bottom: 40px;">Test
+        </button>
+
+
+        <div class="all_item_fields" id="all_item_fields">
+            <span class="req_statement">
+                I kindly request the following items to be provided.
+            </span>
+
+            <div class="item_field withFrame" id="item_field_1">
+                <span class="item_label" id="item_label_1">Item 1 </span>
+                <table class="item_field_table" id="item_field_table_1">
+                    <tbody>
+                    <tr>
+                        <td class="item_desc" colspan="3" id="item_desc_1">
+                            <input class="item_name" id="item_name_1" name="item_name"
+                                   placeholder="Item name / description" type="text"><br>
+                            <span class="small_label">Item name / description
+                                <span class="required_star" id="item_1_required_star_1"> * </span>
+                                <span class="required_star redLabel" redLabel="required_star"> Required * </span>
+                            </span>
+                        </td>
+                        <td class="item_remark" rowspan="2" id="item_remark_1">
+                            <textarea tabindex="-1" class="item_note" id="item_note_1" name="item_note" placeholder="Additional notes" rows="4"></textarea><br>
+                            <span class="small_label">Additional notes (optional)</span>
+                        </td>
+                    <tr>
+                        <td class="avl amt" id="avl_amt_field_1">
+                            <input class="available amount" id="avl_amt_1" name="avl_amt"
+                                   placeholder="Currently available amount" type="text"><br>
+                            <span class="small_label">Currently available amount (optional)</span>
+                        </td>
+                        <td class="req amt" id="req_amt_field_1">
+                            <input class="required amount" id="req_amt_1" name="avail" placeholder="Required amount"
+                                   type="text"><br>
+                            <span class="small_label">Required amount
+                                <span class="required_star" id="item_1_required_star_2"> * </span>
+                                <span class="required_star redLabel" redLabel="required_star"> Required * </span>
+                            </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="item_field withFrame" id="item_field_2">
+                <span class="item_label" id="item_label_2">Item 2 </span>
+                <table class="item_field_table" id="item_field_table_2">
+                    <tbody>
+                    <tr>
+                        <td class="item_desc" colspan="3" id="item_desc_2">
+                            <input class="item_name" id="item_name_2" name="item_name"
+                                   placeholder="Item name / description" type="text"><br>
+                            <span class="small_label">Item name / description
+                                <span class="required_star redLabel" redLabel="required_star"> Required *  </span>
+                            </span>
+                        </td>
+                        <td class="item_remark" rowspan="2" id="item_remark_2">
+                            <textarea tabindex="-1" class="item_note" id="item_note_2" name="item_note" placeholder="Additional notes" rows="4"></textarea><br>
+                            <span class="small_label">Additional notes (optional)</span>
+                        </td>
+                    <tr>
+                        <td class="avl amt" id="avl_amt_field_2">
+                            <input class="available amount" id="avl_amt_2" name="avl_amt"
+                                   placeholder="Currently available amount" type="text"><br>
+                            <span class="small_label">Currently available amount (optional)</span>
+                        </td>
+                        <td class="req amt" id="req_amt_field_2">
+                            <input class="required amount" id="req_amt_2" name="avail" placeholder="Required amount"
+                                   type="text"><br>
+                            <span class="small_label">Required amount
+                                <span class="required_star redLabel" redLabel="required_star"> Required * </span>
+                            </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="close_item_button" id="closeItemBtn_2"><i class="fa-solid fa-x" id="closeItemXIcon_2"></i></div>
+            </div>
+
+            <div class="item_field withFrame" id="item_field_3">
+                <span class="item_label" id="item_label_3">Item 3 </span>
+                <table class="item_field_table" id="item_field_table_3">
+                    <tbody>
+                    <tr>
+                        <td class="item_desc" colspan="3" id="item_desc_3">
+                            <input class="item_name" id="item_name_3" name="item_name"
+                                   placeholder="Item name / description" type="text"><br>
+                            <span class="small_label">Item name / description
+                                <span class="required_star redLabel" redLabel="required_star"> Required *  </span>
+                            </span>
+                        </td>
+                        <td class="item_remark" rowspan="2" id="item_remark_3">
+                            <textarea tabindex="-1" class="item_note" id="item_note_3" name="item_note" placeholder="Additional notes" rows="4"></textarea>
+                            <span class="small_label">Additional notes (optional)</span>
+                        </td>
+                    <tr>
+                        <td class="avl amt" id="avl_amt_field_3">
+                            <input class="available amount" id="avl_amt_3" name="avl_amt"
+                                   placeholder="Currently available amount" type="text"><br>
+                            <span class="small_label">Currently available amount (optional)</span>
+                        </td>
+                        <td class="req amt" id="req_amt_field_3">
+                            <input class="required amount" id="req_amt_3" name="avail" placeholder="Required amount"
+                                   type="text"><br>
+                            <span class="small_label">Required amount
+                                <span class="required_star redLabel" redLabel="required_star"> Required * </span>
+                            </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="close_item_button" id="closeItemBtn_3"><i class="fa-solid fa-x" id="closeItemXIcon_3"></i></div>
+            </div>
+
+
+            <div class="add_new_item" id="add_new_item">
+                <button tabindex="0" class="new_item_btn" id="new_item_btn">
+                    <i tabindex="-1" class="fa-solid fa-circle-plus" style="font-size: 3em;padding-right: 12px;"></i>
+<!--                    <i class="fa-solid fa-circle-plus"></i>-->
+                    <span tabindex="-1">Add new item field</span>
+                </button>
+            </div>
+        </div>
+
+
+        <div class="form_buttons">
+            <button class="submit_btn" id="submitBtn_requestItem" name="submit">Submit</button>
+            <button class="cancel_btn" id="request_cancelBtn" name="clear">Cancel</button>
+        </div>
+        <br>
+    </form>
+</div>
+
+
+<script rel="text/javascript" src="script.js"></script>
+
+<script>
+    // Set current month
+    document.getElementById("request_month").value = new Date().getMonth() + 1;
+
+    // Display current date
+    const dateTime = new Date().toDateString();
+    document.getElementById("current_date").innerHTML = 'Today is : ' + dateTime;
+
+</script>
+</body>
+</html>

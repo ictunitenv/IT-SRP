@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Request - IT Unit Service Request Portal - Ministry of Environment</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="../css/font-family.css" rel="stylesheet"/>
+    <link href="../css/request.css" rel="stylesheet"/>
+    <!--    <link href="css/index.css" rel="stylesheet"/>-->
+
+</head>
+
+<header>
+    <div class="logoBx" onclick="window.location.href='index.html';">
+        <img alt="image" class="logo_png" src="../img/logo_placeholder.png"/>
+        <h1 class="logo_text">IT Unit <br/> Service Request Portal</h1>
+    </div>
+    <div class="help_link">
+        <a href="../help.html"><img alt="Help Icon" class="help-png" id="help-icon" src="../img/help.png"></a>
+        <a href="../help.html"><label class="help_label" for="help-icon">Help</label></a>
+    </div>
+</header>
+
+<body>
+<form action="../php/deprecated/submit_request.php" id="request_form" method="post" name="request_form">
+    <table width="1024px">
+        <tr>
+            <td width="28%">Employee ID: <span class="required_star">*</span></td>
+            <td width="72%"><input autofocus name="emp_id" placeholder="Enter your ID" required type="text">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Employee Name <br> <span class="small_msg">(with initials)</span>: <span class="required_star">*</span>
+            </td>
+            <td><input name="emp_name" placeholder="Ex: ABC Rajapakse" required type="text"></td>
+        </tr>
+
+        <tr>
+            <td>Designation:</td>
+            <td><input name="emp_designation" placeholder="Enter your designation" type="text"></td>
+        </tr>
+
+        <tr>
+            <td>Employee Division: <span class="required_star">*</span></td>
+            <td><select name="emp_div">
+                <option value="Accounts">Accounts</option>
+                <option value="Additional Secretary Office">Additional Secretary Office</option>
+                <option value="Administration">Administration</option>
+                <option value="Air Resource Management and National Ozone Unit">Air Resource Management and National
+                    Ozone Unit
+                </option>
+                <option value="Bio Diversity">Bio Diversity</option>
+                <option value="Climate Change">Climate Change</option>
+                <option value="Environment Education Training, Promotion and Special Project">Environment Education Training, Promotion and Special Project</option>
+                <option value="Environmental Pollution Control and Chemical Management">Environmental Pollution Control
+                    and Chemical Management
+                </option>
+                <option value="Environmental Planning and Economic">Environmental Planning and Economic</option>
+                <option value="Human Resource Development">Human Resource Development</option>
+                <option value="ICT Unit">ICT Unit</option>
+                <option value="Internal Audit">Internal Audit</option>
+                <option value="International Relation">International Relation</option>
+                <option value="Investigation">Investigation</option>
+                <option value="Legal">Legal</option>
+                <option value="Media">Media</option>
+                <option value="Ministry Office">Ministry Office</option>
+                <option value="Natural Resource">Natural Resource</option>
+                <option value="Policy Planning and Monitoring">Policy Planning and Monitoring</option>
+                <option value="Secretary Staff">Secretary Staff</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>Date: <span class="required_star">*</span> <br> <span class="small_msg">(auto-filled)</span></td>
+            <td>
+                <input id="datePicker" name="date" placeholder="" required type="date">
+            </td>
+        </tr>
+
+        <tr>
+            <td>Device Type: <span class="required_star">*</span></td>
+            <td><input name="device_type" placeholder="Laptop/Desktop/Other" required type="text"></td>
+        </tr>
+        <tr>
+            <td>Device's Serial No.:</td>
+            <td><input name="device_serial" placeholder="Product serial number" type="text"></td>
+        </tr>
+        <tr>
+            <td><label for="issue">Issue: <span class="required_star">*</span></label></td>
+            <td rowspan="3"><textarea id="issue" name="issue" placeholder="Your issue/required service" required
+                                      rows="9"></textarea></td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+                <pre> </pre>
+            </td>
+        </tr>
+    </table>
+
+    <button name="submit" type="submit">Submit</button>
+    <button name="clear" type="reset">Cancel</button>
+    <br>
+</form>
+<script>
+    document.getElementById("datePicker").valueAsDate = new Date();
+    document.getElementById("datePicker").disabled = true;
+</script>
+
+</body>
+</html>

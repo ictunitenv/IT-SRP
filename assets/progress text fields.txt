@@ -1,0 +1,111 @@
+
+Colors
+======		
+completed	- #4CAF50
+denied		- #E72121
+working		- #F3D721
+processing	- #2196F3
+pending		- #CCCCCC
+
+
+
+
+Step 1 - Submission
+==================
+statue 1 - Completed:
+	 • Checkmark
+	 • Request Submitted.
+
+*No failed, declined, processing or not started stated for this*
+
+
+
+
+Step 2 - Divisional
+==================
+status 1 - Completed:
+	 • Checkmark
+	 • "Approved by the Director (requester's division)"
+	 • Approved date
+
+status 2 - Declined:
+	 • Denied gif
+	 • "Declined by the director (requester's division)"
+	 • Declined date
+
+status 3 - waiting:
+	 • waiting/processing gif
+	 • "Waiting for director's approval (requester's division)"
+
+status 4 - Pending step
+	 • Pending icon
+	 • "Director's Approval (requester's division)" (in different color)
+
+
+
+
+Step 3 - Divisional
+==================
+status 1 - Completed:
+	* • Checkmark
+	* • "Approved by the Director (ICT)"
+	  • Approved date
+
+status 2 - Declined:
+	* • Denied gif
+	* • "Declined by the director (ICT)"
+	  • Declined date
+
+status 3 - waiting:
+	* • waiting/processing gif
+	* • "Waiting for director's approval (ICT)"
+
+status 4 - Pending step
+	* • Pending icon
+	* • "Director's Approval (ICT)" (in different color)
+
+
+
+
+Step 4 - ICT Unit
+==================
+status 1 - Completed (value 1):
+	* • Checkmark
+	* • "Repair Complete"
+	 • Remark (partial repairs)
+	 • Completed date
+
+
+status 2 - Failed/Cannot Repair (value 0):
+	* • Repair failed gif
+	* • "Cannot be repaired" 
+	  • Reason/Remark
+	  • repair fail date
+
+status 3 - Working (value 2-9):
+	  • Working gif
+	* • "Service/Repair in Progress"
+
+status 4 - Waiting (value null && prev step=null):
+	* • Waiting/processing gif
+	* • "The request is yet to be addressed by the ICT unit."
+
+status 5 - Pending step (value null)
+	* • Pending icon
+	* • "ICT Unit" (in different color)
+
+
+
+
+Step 5 - Final/Finished
+==================
+status 0 - if ict unit declined:
+	 • previous Step Declined icon
+	 • Final stage
+
+status 1 - Completed:
+	 • Checkmark
+	 • Repair :- "Ready to pick up"
+	   Service:- "Service completed"
+	 • 
+

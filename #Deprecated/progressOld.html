@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Request Progress</title>
+    <!--    TODO -> Change titles across all pages -->
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="../css/libraries/bootstrap.css" rel="stylesheet">
+    <script src="../js/libraries/bootstrap.bundle.js"></script>
+
+    <link href="../css/font-family.css" rel="stylesheet"/>
+    <link href="../css/headerSection.css" rel="stylesheet"/>
+    <link href="../css/progress.css" rel="stylesheet"/>
+    <link href="../css/libraries/sweetalert2.css" rel="stylesheet">
+
+    <script src="../js/libraries/sweetalert2.all.js"></script>
+    <script src="../js/libraries/jquery-3.6.0.js"></script>
+</head>
+
+<header>
+    <div class="logoBx" onclick="window.location.href='index.html';">
+        <img alt="image" class="logo_png" src="../img/logo_placeholder.png"/>
+        <h1 class="logo_text">IT Unit <br/> Service Request Portal</h1>
+    </div>
+    <div class="help_link">
+        <a href="../help.html"><img alt="Help Icon" class="help-png" id="help-icon" src="../img/help.png"></a>
+        <a href="../help.html"><p class="help_label">Help</p></a>
+    </div>
+</header>
+
+<body>
+<div class="titleBox">
+    <h1 class="title">Check Request Progress</h1>
+</div>
+
+<div class="card-content">
+    <form action="#" class="search_form">
+        <div class="input_section">
+            <label for="searchInput">Search:</label>
+            <input id="searchInput" name="search_input" placeholder="Enter request ID" type="text" value="">
+        </div>
+        <button id="search_btn" type="button">Search</button>
+    </form>
+
+    <div class="progress_section" id="progressSection">
+        <div class="labels" id="labels">
+            <table class="label_table" id="labelTable">
+                <tbody id="tableBody" valign="top">
+                <tr>
+                    <td class="left_left">
+                        <span class="label">Request ID : &ensp; </span>
+                    </td>
+                    <td class="left_right">
+                        <span class="value" id="valueReqId">dummy-request-id</span>
+                    </td>
+                    <td class="" rowspan="10" style="height: fit-content; width: auto">
+                        <table>
+                            <tr>
+                                <td class="right_left" style="vertical-align: top">
+                                    <span class="label" id="ServInfo">Repair/Service : </span>
+                                </td>
+                                <td class="right_right">
+                                    <span class="value" id="valueServInfo">dummy-service</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right_left">
+                                    <span class="label" id="devType">Device type : </span>
+                                </td>
+                                <td class="right_right">
+                                    <span class="value" id="valueDevType">dummy-device</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right_left">
+                                    <span class="label" id="serialNo">Serial No : </span>
+                                </td>
+                                <td class="right_right">
+                                    <span class="value" id="valueSerial">dummy-serial</span>
+                                </td>
+                            </tr>
+                            <tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left_left">
+                        <span class="label">Name : &ensp; </span>
+                    </td>
+                    <td class="left_right">
+                        <span class="value" id="valueName">dummy-name + (designation)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left_left">
+                        <span class="label">Division : &ensp; </span>
+                    </td>
+                    <td class="left_right">
+                        <span class="value" id="valueDiv">dummy-division</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left_left">
+                        <span class="label">Requested Date : &ensp; </span>
+                    </td>
+                    <td class="left_right">
+                        <span class="value" id="valueDate">dummy-2001-01-01</span><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="label_table" id="noReqIdTable">
+                <tbody valign="top">
+                <tr>
+                    <td align="center" class="empty_table">Enter your request ID to see the progress.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="label_table" id="noLabelsTable">
+                <tbody valign="top">
+                <tr>
+                    <td align="center" class="empty_table">No records available.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="label_table" id="noValidReqIdTable">
+                <tbody valign="top">
+                <tr>
+                    <td align="center" class="empty_table">Request ID does not exist.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="progress_steps" id="progressSteps">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link completed" href="#" id="req_sub_step"></a>
+                    <a class="abc" href="#" id="req_sub_icon"><img src="../img/complete.png"></a>
+                    <div id="req_sub_text" class="step_description"><b>Request Submitted</b></div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link completed" href="#" id="div_dir_step"></a>
+                    <a class="abc" href="#" id="div_dir_icon"></a>
+                    <div id="div_dir_text" class="step_description">Director's Approval<span style="font-size: small">(Divisional)</span></div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link declined" href="#" id="ict_dir_step"></a>
+                    <a class="abc" href="#" id="ict_dir_icon"></a>
+                    <div id="ict_dir_text" class="step_description">Director's Approval<span style="font-size: small">(ICT)</span></div>
+                </li>
+                <li class="nav-item" id="repStatusItem">
+                    <a class="nav-link not-started" href="#" id="rep_status_step"></a>
+                    <a class="abc" href="#" id="rep_status_icon"></a>
+                    <div id="rep_status_text" class="step_description">ICT Unit</div>
+                    <div style="display: none" class="click_here_banner" id="clickHereBanner"> Click for more info</div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link not-started" href="#" id="finish_step"></a>
+                    <a class="abc" href="#" id="finish_icon"></a>
+                    <div id="finish_text" class="step_description">Request Completion</span></div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+    // Trigger updateProgress() when search button is clicked
+    document.getElementById("search_btn").addEventListener("click", function (event) {
+        updateProgress();
+    });
+
+    // Add an event listener for key press events on the input field
+    document.getElementById("searchInput").addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent the default Enter key behavior (e.g., form submission)
+            // Trigger the updateProgress function
+            updateProgress();
+        }
+    });
+
+    let requestId;
+
+    function updateProgress() {
+        // event.preventDefault();
+        requestId = document.getElementById("searchInput").value;
+        let requestIdType = requestId.substring(0, 3);
+        let tableSource;
+        if (requestIdType === "REP") {
+            tableSource = "repair";
+        } else {
+            tableSource = "service";
+        }
+
+        if (requestId !== "") {
+            document.getElementById("noReqIdTable").style.display = "none";
+            document.getElementById("noLabelsTable").style.display = "none";
+            document.getElementById("noValidReqIdTable").style.display = "none";
+
+            $.ajax({
+                url: 'php/fetch_progressData.php',
+                method: 'GET',
+                data: {request_id: requestId, table_source: tableSource}, // Pass the request ID to PHP
+                dataType: 'json',
+                success: function (data) {
+                    // Populate the step progress with the new data
+                    if (data.length === 0) {
+                        // If there are no records, display a message instead of the progress
+                        document.getElementById("labelTable").style.display = "none";
+                        document.getElementById("noReqIdTable").style.display = "none";
+                        document.getElementById("noValidReqIdTable").style.display = "none";
+                        document.getElementById("progressSteps").style.display = "none";
+                        document.getElementById("noLabelsTable").style.display = "table";
+
+                    } else {
+                        // Display the step progress based on the data fetched from the database
+                        updateStepProgress(data);
+                    }
+                },
+                error: function () {
+                    console.log("Failed to fetch new data");
+                }
+            });
+        } else {
+            console.log("test" + requestId + "ing");
+            document.getElementById("noReqIdTable").style.display = "table";
+            document.getElementById("labelTable").style.display = "none";
+            document.getElementById("noLabelsTable").style.display = "none";
+            document.getElementById("noValidReqIdTable").style.display = "none";
+            document.getElementById("progressSteps").style.display = "none";
+        }
+
+    }
+
+    function updateStepProgress(data) {
+        // Write logic to update the step progress based on the data
+        // You can use the data to update each step accordingly
+        // For example, for step 2 (div_dir_step):
+
+        const emp_division = data.emp_division;
+        const tableSource = data.table_source;
+        const divDirAprvDate = data.div_dir_approval_date;
+        const ictDirAprvDate = data.ict_dir_approval_date;
+        const dateCompleted = data.completed_date;
+        const remarks = data.remarks;
+
+
+        if (data.record_id != null) {
+            document.getElementById("noReqIdTable").style.display = "none";
+            document.getElementById("noLabelsTable").style.display = "none";
+            document.getElementById("noValidReqIdTable").style.display = "none";
+
+            document.getElementById("labelTable").style.display = "table";
+            document.getElementById("progressSteps").style.display = "flex";
+
+            document.getElementById("valueReqId").textContent = data.request_id;
+            document.getElementById("valueName").textContent = data.name_initials + " (" + data.emp_designation + ")";
+            document.getElementById("valueDiv").textContent = data.emp_division;
+            document.getElementById("valueDate").textContent = data.date;
+
+            document.getElementById("ServInfo").textContent = data.table_source + " info : ";
+            // document.getElementById("valueServInfo").textContent = data.service_issue;
+            //display multi lined text as multi lines.
+            const valueServInfo = document.getElementById("valueServInfo");
+            valueServInfo.innerHTML = data.service_issue;
+
+            if (tableSource === "Repair") {
+                document.getElementById("valueDevType").textContent = data.device_type;
+                document.getElementById("valueSerial").textContent = data.serial_no;
+            } else {
+                document.getElementById("valueDevType").textContent = "-not a repair-";
+                document.getElementById("valueSerial").textContent = "-not a repair-";
+            }
+
+            const req_sub_icon = document.getElementById("req_sub_icon");
+            const req_sub_text = document.getElementById("req_sub_text");
+            const div_dir_icon = document.getElementById("div_dir_icon");
+            const div_dir_text = document.getElementById("div_dir_text");
+            const ict_dir_icon = document.getElementById("ict_dir_icon");
+            const ict_dir_text = document.getElementById("ict_dir_text");
+            const rep_status_icon = document.getElementById("rep_status_icon");
+            const rep_status_text = document.getElementById("rep_status_text");
+            const finish_icon = document.getElementById("finish_icon");
+            const finish_text = document.getElementById("finish_text");
+
+            const completeImg = "complete.png";
+            const declineImg = "decline.gif";
+            const prevStepDeclinedImg = "disabled.png";
+            const workingImg = "working.gif";
+            const svcRepFailedImg = "repair_failed.gif";
+            const svcRepDeclinedImg = "service_declined.gif";
+            const processingImg = "processing.gif";
+            const PendingImg = "pending.gif";
+
+            let disabledStepColor = 'rgb(191,191,191)';
+            let completedStepsColor = 'rgba(0,0,0,0.55)';
+
+            //Step 2 logic
+            if (data.request_id === null) {
+                document.getElementById("div_dir_step").className = "nav-link not-started";
+                div_dir_icon.innerHTML = '<img src=' + prevStepDeclinedImg + '"../img">';
+                div_dir_text.innerHTML = 'Director\'s Approval<span style="font-size: small">(ICT)</span>';
+
+                div_dir_text.style.color = disabledStepColor;
+                ict_dir_text.style.color = disabledStepColor;
+                rep_status_text.style.color = disabledStepColor;
+                finish_text.style.color = disabledStepColor;
+
+            } else if (data.approval_div_dir === 1) {
+                document.getElementById("div_dir_step").className = "nav-link completed";
+                div_dir_icon.innerHTML = '<img src=' + completeImg + '"../img">';
+                div_dir_text.innerHTML = '<b>Approved by the Director</b>' +
+                    '<span style="font-size: small">(' + emp_division + ' division)</span>' +
+                    '<span style="font-size: small">Approved on:</span> <span>' + divDirAprvDate +'</span>';
+                req_sub_text.style.color = completedStepsColor;
+
+            } else if (data.approval_div_dir === 0) {
+                document.getElementById("div_dir_step").className = "nav-link declined";
+                div_dir_icon.innerHTML = '<img src=' + declineImg + '"../img">';
+                div_dir_text.innerHTML = '<b>Declined by the Director</b>' +
+                    '<span style="font-size: small">(' + emp_division + ' division)</span>' +
+                    '<span style="font-size: small">Declined on:</span> <span>' + divDirAprvDate +'</span>';
+                req_sub_text.style.color = completedStepsColor;
+
+            } else if (data.approval_div_dir === null && data.request_id != null) {
+                document.getElementById("div_dir_step").className = "nav-link processing";
+                div_dir_icon.innerHTML = '<img src=' + processingImg + '"../img">';
+                div_dir_text.innerHTML = '</b>Waiting for director\'s approval</b><span style="font-size: small">(' + emp_division + ' division)</span>';
+                req_sub_text.style.color = completedStepsColor;
+
+            } else {
+                document.getElementById("div_dir_step").className = "nav-link not-started";
+                div_dir_icon.innerHTML = '<img src=' + PendingImg + '"../img">';
+                div_dir_text.innerHTML = 'Director\'s Approval<span style="font-size: small">(' + emp_division + ' division)</span>';
+            }
+
+
+            //Step 3 logic
+            if (data.approval_div_dir === 0 || data.request_id === null) {
+                document.getElementById("ict_dir_step").className = "nav-link not-started";
+                ict_dir_icon.innerHTML = '<img src=' + prevStepDeclinedImg + '"../img">';
+                ict_dir_text.innerHTML = 'Director\'s Approval<span style="font-size: small">(ICT)</span>';
+
+                ict_dir_text.style.color = disabledStepColor;
+                rep_status_text.style.color = disabledStepColor;
+                finish_text.style.color = disabledStepColor;
+
+            } else if (data.approval_ict_dir === 1) {
+                document.getElementById("ict_dir_step").className = "nav-link completed";
+                ict_dir_icon.innerHTML = '<img src=' + completeImg + '"../img">';
+                ict_dir_text.innerHTML = '<b>Approved by the Director</b>' +
+                    '<span style="font-size: small">(ICT)</span>' +
+                    '<span style="font-size: small">Approved on:</span> <span>' + ictDirAprvDate +'</span>';
+                div_dir_text.style.color = completedStepsColor;
+
+            } else if (data.approval_ict_dir === 0) {
+                document.getElementById("ict_dir_step").className = "nav-link declined";
+                ict_dir_icon.innerHTML = '<img src=' + declineImg + '"../img">';
+                ict_dir_text.innerHTML = '<b>Declined by the Director</b>' +
+                    '<span style="font-size: small">(ICT)</span>' +
+                    '<span style="font-size: small">Declined on:</span> <span>' + divDirAprvDate +'</span>';
+                div_dir_text.style.color = completedStepsColor;
+
+            } else if (data.approval_ict_dir === null && data.approval_div_dir != null) {
+                document.getElementById("ict_dir_step").className = "nav-link processing";
+                ict_dir_icon.innerHTML = '<img src=' + processingImg + '"../img">';
+                ict_dir_text.innerHTML = '<b>Waiting for director\'s approval</b><span style="font-size: small">(ICT)</span>';
+                div_dir_text.style.color = completedStepsColor;
+
+            } else {
+                document.getElementById("ict_dir_step").className = "nav-link not-started";
+                ict_dir_icon.innerHTML = '<img src=' + PendingImg + '"../img">';
+                ict_dir_text.innerHTML = 'Director\'s Approval<span style="font-size: small">(ICT)</span>';
+            }
+
+
+            //Step 4 logic
+            if (data.approval_ict_dir === 0 || data.approval_div_dir === 0 || data.request_id === null) {
+                document.getElementById("rep_status_step").className = "nav-link not-started";
+                rep_status_icon.innerHTML = '<img src=' + prevStepDeclinedImg + '"../img">';
+                rep_status_text.innerHTML = 'ICT Unit';
+                rep_status_text.style.color = disabledStepColor;
+                finish_text.style.color = disabledStepColor;
+
+                document.getElementById("clickHereBanner").style.display = "none";
+
+
+            } else if (data.status === 1) {
+                document.getElementById("rep_status_step").className = "nav-link completed";
+                rep_status_icon.innerHTML = '<img src=' + completeImg + '"../img">';
+                rep_status_text.innerHTML = '<b>Repair Complete</b>' +
+                    '<span style="font-size: small">Completed on:</span> <span>' + dateCompleted +'</span>';
+                ict_dir_text.style.color = completedStepsColor;
+
+                document.getElementById("clickHereBanner").style.display = "flex";
+
+                // Display remarks
+                document.getElementById("repStatusItem").setAttribute('onclick','viewRemarks(\''+ remarks + '\',\''+tableSource + '\')');
+
+            } else if (data.status === 0) {
+                // Update the class and text for this step
+                document.getElementById("rep_status_step").className = "nav-link declined";
+                if (tableSource === 'Repair'){
+                    rep_status_icon.innerHTML = '<img src=' + svcRepFailedImg + '"../img">';
+                    rep_status_text.innerHTML = '<b>Unable to perform the required ' + tableSource + '</b>';
+
+                    document.getElementById("clickHereBanner").style.display = "flex";
+
+                    // Display remarks
+                    document.getElementById("repStatusItem").setAttribute('onclick','viewRemarks(\''+ remarks + '\',\''+tableSource + '\')');
+                } else {
+                    rep_status_icon.innerHTML = '<img src=' + svcRepDeclinedImg + '"../img">';
+                    rep_status_text.innerHTML = '<b>' + tableSource + ' has be declined by the ICT unit</b>';
+
+                    document.getElementById("clickHereBanner").style.display = "flex";
+
+                    // Display remarks
+                    document.getElementById("repStatusItem").setAttribute('onclick','viewRemarks(\''+ remarks + '\',\''+tableSource + '\')');
+                }
+                ict_dir_text.style.color = completedStepsColor;
+
+            } else if (data.status != null) {
+                document.getElementById("rep_status_step").className = "nav-link working";
+                rep_status_icon.innerHTML = '<img src=' + workingImg + '"../img">';
+                rep_status_text.innerHTML = '<b>' + tableSource + ' in Progress</b>';
+                ict_dir_text.style.color = completedStepsColor;
+
+                document.getElementById("clickHereBanner").style.display = "none";
+
+            } else if (data.status === null && data.approval_ict_dir != null) {
+                document.getElementById("rep_status_step").className = "nav-link processing";
+                rep_status_icon.innerHTML = '<img src=' + processingImg + '"../img">';
+                rep_status_text.innerHTML = '</b>The ' + tableSource + 'is yet to be addressed by the ICT Unit</b>';
+                ict_dir_text.style.color = completedStepsColor;
+
+                document.getElementById("clickHereBanner").style.display = "none";
+
+            } else {
+                document.getElementById("rep_status_step").className = "nav-link not-started";
+                rep_status_icon.innerHTML = '<img src=' + PendingImg + '"../img">';
+                rep_status_text.innerHTML = 'ICT Unit';
+
+                document.getElementById("clickHereBanner").style.display = "none";
+            }
+
+
+            //Step 5 logic
+            if (data.status === 0 || data.approval_ict_dir === 0 || data.approval_div_dir === 0 || data.request_id === null) {
+                document.getElementById("finish_step").className = "nav-link not-started";
+                finish_icon.innerHTML = '<img src=' + prevStepDeclinedImg + '"../img">';
+                finish_text.innerHTML = 'Request Completion';
+                finish_text.style.color = disabledStepColor;
+
+            } else if (data.is_finished === 1) {
+                document.getElementById("finish_step").className = "nav-link completed last";
+                finish_icon.innerHTML = '<img src=' + completeImg + '"../img">';
+                if (tableSource === 'Repair'){
+                    finish_text.innerHTML = '<b>Request Complete!<br/><span style="color:' + completedStepsColor + '">Your device is ready</span></b>';
+                } else {
+                    finish_text.innerHTML = '<b>The requested service has been successfully provided</b>';
+                }
+                rep_status_text.style.color = completedStepsColor;
+
+            } else if (data.is_finished === 0) {
+                document.getElementById("finish_step").className = "nav-link declined";
+                finish_icon.innerHTML = '<img src=' + declineImg + '"../img">';
+                finish_text.innerHTML = '</b>Finalizing failed</b>';
+                rep_status_text.style.color = completedStepsColor;
+
+            }else if (data.is_finished === null && data.status === 1) {
+                document.getElementById("finish_step").className = "nav-link processing";
+                finish_icon.innerHTML = '<img src=' + processingImg + '"../img">';
+                finish_text.innerHTML = '</b>Finalizing. Please wait</b>';
+                rep_status_text.style.color = completedStepsColor;
+
+            } else {
+                document.getElementById("finish_step").className = "nav-link not-started";
+                finish_icon.innerHTML = '<img src=' + PendingImg + '"../img">';
+                finish_text.innerHTML = 'Request Completion';
+            }
+
+        } else {
+            // document.getElementById("labelTable").style.display = "flex";
+            document.getElementById("noReqIdTable").style.display = "none";
+            document.getElementById("noLabelsTable").style.display = "none";
+            document.getElementById("labelTable").style.display = "none";
+            document.getElementById("progressSteps").style.display = "none";
+            document.getElementById("noValidReqIdTable").style.display = "table";
+        }
+
+
+
+    }
+
+
+
+    function viewRemarks(remarks,tableSource) {
+        console.log(remarks + ' ' + tableSource);
+        Swal.fire({
+            title: tableSource + ' Remarks',
+            text: remarks,
+            icon: "info",
+            showCancelButton: false,
+            confirmButtonColor: "#2196F3",
+            confirmButtonText: "Ok",
+            backdrop: 'rgba(0,0,0,0.6)',
+        });
+    }
+</script>
+
+</body>
+</html>

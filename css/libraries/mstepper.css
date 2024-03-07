@@ -1,0 +1,311 @@
+/**
+ * Materialize Stepper - A little plugin that implements a stepper to Materializecss framework.
+ * @version v3.1.0
+ * @author Igor Marcossi (Kinark) <igormarcossi@gmail.com>.
+ * @link https://github.com/Kinark/Materialize-stepper
+ * 
+ * Licensed under the MIT License (https://github.com/Kinark/Materialize-stepper/blob/master/LICENSE).
+ */
+
+.card-content ul.stepper {
+    margin: 1em -24px;
+    padding: 0 24px;
+}
+
+@media only screen and (min-width: 993px) {
+    .card-content ul.stepper.horizontal {
+        margin-right: -24px;
+        margin-left: -24px;
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .card-content ul.stepper.horizontal:first-child {
+        margin-top: -24px;
+    }
+
+    .card-content ul.stepper.horizontal .step.step-content {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+
+    .card-content ul.stepper.horizontal .step.step-content .step-actions {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+}
+
+ul.stepper {
+    overflow-x: hidden;
+    overflow-y: auto;
+    counter-reset: section;
+}
+
+ul.stepper .wait-feedback {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+ul.stepper .step {
+    position: relative;
+    transition: height 400ms cubic-bezier(0.4, 0, 0.2, 1), padding-bottom 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+ul.stepper .step .step-title {
+    display: block;
+    margin: 0 -24px;
+    padding: 15.5px 44px 24px 64px;
+    cursor: pointer;
+}
+
+ul.stepper .step .step-title:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+}
+
+ul.stepper .step .step-title::after {
+    font-size: 12.8px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    position: absolute;
+    display: block;
+    content: attr(data-step-label);
+    color: #424242;
+}
+
+ul.stepper .step .step-content {
+    position: relative;
+    display: none;
+    overflow: visible;
+    width: inherit;
+    height: 0;
+    margin-right: 24px;
+    margin-left: 41px;
+    transition: height 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+ul.stepper .step .step-content .step-actions {
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 16px;
+    padding-bottom: 4px;
+}
+
+ul.stepper .step .step-content .step-actions .btn:not(:last-child), ul.stepper .step .step-content .step-actions .btn-flat:not(:last-child), ul.stepper .step .step-content .step-actions .btn-large:not(:last-child) {
+    margin-right: 5px;
+}
+
+ul.stepper .step .step-content .row {
+    margin-bottom: 7px;
+}
+
+ul.stepper .step::before {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 26px;
+    position: absolute;
+    top: 13px;
+    left: 1px;
+    width: 26px;
+    height: 26px;
+    content: counter(section);
+    counter-increment: section;
+    transition: background-color 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    color: white;
+    border-radius: 50%;
+    background-color: #B2B2B2;
+}
+
+ul.stepper .step.active .step-title {
+    font-weight: 500;
+}
+
+ul.stepper .step.active .step-content {
+    display: block;
+    height: auto;
+}
+
+ul.stepper .step.active::before, ul.stepper .step.done::before {
+    background-color: #2196f3;
+}
+
+ul.stepper .step.done::before {
+    font-family: 'Material Icons';
+    font-size: 16px;
+    content: '\e5ca';
+}
+
+ul.stepper .step.wrong::before {
+    font-family: 'Material Icons';
+    font-size: 24px;
+    content: '\e001';
+    background-color: red;
+}
+
+ul.stepper .step.feedbacking .step-content > *:not(.wait-feedback) {
+    opacity: 0.1;
+}
+
+ul.stepper .step:not(:last-of-type)::after {
+    position: absolute;
+    top: 52px;
+    left: 13.5px;
+    width: 1px;
+    height: 40%;
+    height: calc(100% - 52px);
+    content: '';
+    transition: height 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+ul.stepper .step:not(:last-of-type).active {
+    padding-bottom: 36px;
+}
+
+ul.stepper > li:not(:last-of-type) {
+    padding-bottom: 10px;
+}
+
+@media only screen and (min-width: 993px) {
+    ul.stepper.horizontal {
+        position: relative;
+        display: flex;
+        overflow: hidden;
+        justify-content: space-between;
+        min-height: 458px;
+    }
+
+    ul.stepper.horizontal::before {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        min-height: 84px;
+        content: '';
+        background-color: transparent;
+        box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    ul.stepper.horizontal .step {
+        position: static;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 84px;
+        padding: 0 !important;
+    }
+
+    ul.stepper.horizontal .step::before {
+        content: none;
+    }
+
+    ul.stepper.horizontal .step:last-of-type {
+        width: auto !important;
+    }
+
+    ul.stepper.horizontal .step:not(:last-of-type)::after, ul.stepper.horizontal .step.active:not(:last-of-type)::after {
+        position: static;
+        display: inline-block;
+        width: 100%;
+        height: 1px;
+        content: '';
+    }
+
+    ul.stepper.horizontal .step .step-title {
+        line-height: 84px;
+        display: inline-block;
+        overflow: hidden;
+        flex-shrink: 0;
+        max-width: 220px;
+        height: 84px;
+        margin: 0;
+        padding: 0 25px 0 65px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    ul.stepper.horizontal .step .step-title::before {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 26px;
+        position: absolute;
+        top: 28.5px;
+        left: 1px;
+        left: 19px;
+        width: 26px;
+        height: 26px;
+        content: counter(section);
+        counter-increment: section;
+        transition: background-color 400ms cubic-bezier(0.4, 0, 0.2, 1);
+        text-align: center;
+        color: white;
+        border-radius: 50%;
+        background-color: #B2B2B2;
+    }
+
+    ul.stepper.horizontal .step .step-title::after {
+        top: 15px;
+    }
+
+    ul.stepper.horizontal .step.active ~ .step .step-content {
+        left: 100%;
+    }
+
+    ul.stepper.horizontal .step.active .step-content {
+        left: 0 !important;
+    }
+
+    ul.stepper.horizontal .step.active .step-title::before, ul.stepper.horizontal .step.done .step-title::before {
+        background-color: #2196f3;
+    }
+
+    ul.stepper.horizontal .step.done .step-title::before {
+        font-family: 'Material Icons';
+        font-size: 16px;
+        content: '\e5ca';
+    }
+
+    ul.stepper.horizontal .step.wrong .step-title::before {
+        font-family: 'Material Icons';
+        font-size: 24px;
+        content: '\e001';
+        background-color: red;
+    }
+
+    ul.stepper.horizontal .step .step-content {
+        position: absolute;
+        top: 84px;
+        left: -100%;
+        display: block;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 100%;
+        height: calc(100% - 84px);
+        margin: 0;
+        padding: 20px 20px 76px 20px;
+        transition: left 400ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    ul.stepper.horizontal .step .step-content .step-actions {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        flex-direction: row-reverse;
+        width: 100%;
+        padding: 20px;
+        background-color: transparent;
+    }
+
+    ul.stepper.horizontal .step .step-content .step-actions .btn:not(:last-child), ul.stepper.horizontal .step .step-content .step-actions .btn-flat:not(:last-child), ul.stepper.horizontal .step .step-content .step-actions .btn-large:not(:last-child) {
+        margin-right: 0;
+        margin-left: 5px;
+    }
+}

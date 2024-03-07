@@ -1,0 +1,303 @@
+/*@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');*/
+
+* {
+    font-family: "Poppins", sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+div {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+body {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    color: #333;
+    background-color: hsla(0, 100%, 50%, 0.01);
+}
+
+.titleBox {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: fit-content;
+    margin: 40px auto;
+    padding: 12px 40px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 20px rgb(0 0 0 / 3%);
+}
+
+span.title_division {
+    margin-top: -25px;
+}
+
+.logout_btn {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: fit-content;
+    margin: -60px 10% 20px auto;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: aqua;
+}
+
+button.approval_option {
+    display: unset;
+    width: 100px;
+    margin: 4px;
+    padding: 10px;
+    cursor: pointer;
+    color: #383333;
+    border: none;
+    border-radius: 5px;
+    background-color: #003366;
+}
+
+button.approve {
+    border: 1px solid rgba(8, 168, 0, 0.75);
+    background-color: hsla(117, 100%, 33%, 0.1);
+}
+
+button.decline {
+    border: 1px solid rgba(255, 0, 0, 0.75);
+    background-color: hsla(0, 100%, 50%, 0.1);
+}
+
+button.approve:hover {
+    border: 1px solid rgba(8, 168, 0, 0.3);
+    background-color: hsla(117, 100%, 33%, 0.3);
+}
+
+button.decline:hover {
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    background-color: hsla(0, 100%, 50%, 0.3);
+}
+
+/*button.approval_option:hover {*/
+/*    background-color: #0056b3;*/
+/*}*/
+
+button[type="submit"],
+button[type="reset"] {
+    margin-top: 40px;
+    margin-right: 10%;
+    margin-left: 90%;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    background-color: #333;
+}
+
+
+/******TABLE STYLES******/
+/*======================*/
+
+div.report_table {
+    max-width: 80%;
+    height: fit-content;
+    margin: 0 auto 25px auto;
+    padding: 40px 40px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.075);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    /*margin: 20px 0;*/
+
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+    color: #383333;
+    border: 1px solid rgba(0, 69, 255, 0.2);
+}
+
+td.approval_column,
+td.report_column_align {
+    text-align: center;
+    vertical-align: middle;
+}
+
+td.empty_table {
+    line-height: 500%;
+    text-align: center;
+}
+
+thead {
+    border-radius: 20px;
+    /*color: #383333;*/
+    background-color: rgb(0 69 255 / 7%);
+}
+
+tbody {
+    background-color: #fff; /* Light Tinted Red */
+}
+
+
+.footer {
+    height: 100px;
+}
+
+.history_button {
+    align-content: center;
+    justify-content: center;
+    width: 250px;
+    height: 50px;
+    margin: 30px auto;
+    padding: 5px;
+    cursor: pointer;
+    transition: 200ms;
+    border-radius: 15px;
+    box-shadow: 1px 1px 6px 2px rgba(0, 0, 0, 0.1);
+}
+
+.history_button:hover {
+    cursor: pointer;
+    transition: 200ms;
+    color: white;
+    background: #0a53be;
+    box-shadow: 1px 1px 6px 2px rgba(0, 0, 0, 0.1);
+}
+
+.history_table {
+    display: none;
+}
+
+p {
+    font-size: 0.8em;
+    font-weight: 400;
+    line-height: 1.5em;
+}
+
+b {
+    font-weight: 600;
+}
+
+
+/*RESPONSIVE*/
+/*===========*/
+
+
+@media (max-width: 1280px) {
+    div.report_table {
+        max-width: 85%;
+    }
+
+}
+
+@media (max-width: 900px) {
+
+}
+
+@media (max-width: 520px) {
+
+}
+
+
+/***** FANCY PRINT BUTTON ******/
+/*=============================*/
+
+/*@import url('https://fonts.googleapis.com/css?family=Rubik:700&display=swap');*/
+
+* {
+    /*    box-sizing: border-box;*/
+    /*    &::before, &::after {*/
+    /*        box-sizing: border-box;*/
+    /*    }*/
+    /*}*/
+
+    /*body {*/
+    /*    font-family: 'Rubik', sans-serif;*/
+    /*    font-size: 1rem;*/
+    /*    line-height: 1.5;*/
+    /*    display: flex;*/
+    /*    align-items: center;*/
+    /*    justify-content: center;*/
+    /*    margin: 0;*/
+    /*    min-height: 100vh;*/
+    /*    background: #fff;*/
+}
+
+/*button {*/
+/*    font-family: inherit;*/
+/*    font-size: inherit;*/
+/*    position: relative;*/
+/*    display: inline-block;*/
+/*    margin: 3vh 0 0 3vh;*/
+/*    cursor: pointer;*/
+/*    vertical-align: middle;*/
+/*    text-decoration: none;*/
+/*    border: 0;*/
+/*    outline: none;*/
+
+/*    &.learn-more {*/
+/*        font-weight: 600;*/
+/*        padding: 1.25em 2em;*/
+/*        transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);*/
+/*        text-transform: uppercase;*/
+/*        color: #382b22;*/
+/*        border: 2px solid #b18597;*/
+/*        border-radius: 0.75em;*/
+/*        background: #fff0f0;*/
+/*        transform-style: preserve-3d;*/
+
+/*        &::before {*/
+/*            position: absolute;*/
+/*            top: 0;*/
+/*            right: 0;*/
+/*            bottom: 0;*/
+/*            left: 0;*/
+/*            width: 100%;*/
+/*            height: 100%;*/
+/*            content: '';*/
+/*            transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);*/
+/*            transform: translate3d(0, 0.75em, -1em);*/
+/*            border-radius: inherit;*/
+/*            background: #f9c4d2;*/
+/*            box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;*/
+/*        }*/
+
+/*        &:hover {*/
+/*            transform: translate(0, 0.25em);*/
+/*            background: #ffe9e9;*/
+
+/*            &::before {*/
+/*                transform: translate3d(0, 0.5em, -1em);*/
+/*                box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;*/
+/*            }*/
+/*        }*/
+
+/*        &:active {*/
+/*            transform: translate(0em, 0.75em);*/
+/*            background: #ffe9e9;*/
+
+/*            &::before {*/
+/*                transform: translate3d(0, 0, -1em);*/
+/*                box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;*/
+/*            }*/
+/*        }*/
+/*    }*/
+/*}*/

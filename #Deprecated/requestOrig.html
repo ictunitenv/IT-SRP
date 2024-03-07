@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Request Form - IT Unit Service Request Portal - Ministry of Environment</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="../css/font-family.css" rel="stylesheet"/>
+    <link href="../css/headerSection.css" rel="stylesheet"/>
+    <link href="../css/request.css" rel="stylesheet">
+
+    <!-- Include SweetAlert2 CSS and JavaScript -->
+    <link href="../css/libraries/sweetalert2.css" rel="stylesheet">
+    <script src="../js/libraries/sweetalert2.all.js"></script>
+    <script src="../js/libraries/jquery-3.6.0.js"></script>
+
+    <style>
+        /*****TAB LAYOUT*****/
+        /*==================*/
+        .tab {
+            display: none;
+            /*margin: 130px auto 40px auto;*/
+        }
+
+        .active {
+            display: block;
+        }
+
+        .tab_bar {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-content: center;
+            align-items: flex-end;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            width: fit-content;
+            margin: -116px 0 0 -23px;
+            transition: 0.2s;
+            box-shadow: 0 0 11px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .tab_button {
+            flex-direction: column;
+            height: 45px;
+            margin-right: -1px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-align: center;
+            border-radius: 0;
+            background-color: hsl(218 100% 95% / 1);
+            box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .active_button {
+            transition: 0.2s;
+            background-color: hsl(223.33deg 100% 68.97%);
+            box-shadow: none;
+        }
+
+        .active_button:hover {
+            background-color: #333333;
+        }
+
+        .tab_button:hover {
+            background-color: #ccc;
+        }
+
+        .tab_button.active {
+            background-color: #ccc;
+        }
+
+        td.table_left {
+            width: 20%;
+            min-width: 17%;
+        }
+
+        td.table_right {
+            width: 80%;
+        }
+
+        @media (max-width: 540px) {
+            .tab_bar {
+                width: 100%;
+                margin: -91.3pt 0 0 0;
+                transition: 0.2s;
+            }
+
+            .tab_button {
+                width: 50%;
+                height: 50px;
+                margin-right: unset;
+                padding-top: 12px;
+                transition: 0.2s;
+            }
+
+            td.table_right {
+                width: 70%;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="logoBx" onclick="window.location.href='index.html';">
+        <img alt="image" class="logo_png" src="../img/logo_placeholder.png"/>
+        <h1 class="logo_text">IT Unit <br/> Service Request Portal</h1>
+    </div>
+    <div class="help_link">
+        <a href="../help.html"><img alt="Help Icon" class="help-png" id="help-icon" src="../img/help.png"></a>
+        <a href="../help.html"><p class="help_label">Help</p></a>
+    </div>
+</header>
+
+<!-- Tab content -->
+<div class="tab active" id="page1">
+    <!--    TODO : Add <label> tag to all the label texts    -->
+    <form action="" id="request_form" method="POST" name="request_form">
+
+        <div class="titleBox">
+            <h1 class="title">Repair Form</h1>
+        </div>
+
+        <!-- Code for the tab buttons -->
+        <div class="tab_bar">
+            <div class="tab_button active_button" onclick="showTab('page1')">Repair</div>
+            <div class="tab_button" onclick="showTab('page2')">Service</div>
+        </div>
+
+        <table width="1024px">
+            <tr>
+                <td class="table_left">Employee ID: <span class="required_star">*</span></td>
+                <td class="table_right"><input autofocus id="emp_id_rep" name="emp_id" placeholder="Enter your ID"
+                                               required type="text">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Employee Name <br> <span class="small_msg">(with initials)</span>: <span
+                        class="required_star">*</span></td>
+                <td><input id="emp_name_rep" name="emp_name" placeholder="Ex: ABC Rajapakse" required type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Designation:</td>
+                <td><input id="emp_designation_rep" name="emp_designation" placeholder="Enter your designation"
+                           type="text"></td>
+            </tr>
+
+            <tr>
+                <td>Employee Division: <span class="required_star">*</span></td>
+                <td><select id="emp_div_rep" name="emp_div">
+                    <option disabled selected value="">-Select your division-</option>
+                    <option value="Accounts">Accounts</option>
+                    <option value="Additional Secretary Office">Additional Secretary Office</option>
+                    <option value="Administration">Administration</option>
+                    <option value="Air Resource Management and National Ozone Unit">Air Resource Management and
+                        National
+                        Ozone Unit
+                    </option>
+                    <option value="Bio Diversity">Bio Diversity</option>
+                    <option value="Climate Change">Climate Change</option>
+                    <option value="Environment Education Training, Promotion and Special Project">Environment Education Training, Promotion and Special Project</option>
+                    <option value="Environmental Pollution Control and Chemical Management">Environmental Pollution
+                        Control
+                        and Chemical Management
+                    </option>
+                    <option value="Environmental Planning and Economic">Environmental Planning and Economic</option>
+                    <option value="Human Resource Development">Human Resource Development</option>
+                    <option value="ICT Unit">ICT Unit</option>
+                    <option value="Internal Audit">Internal Audit</option>
+                    <option value="International Relation">International Relation</option>
+                    <option value="Investigation">Investigation</option>
+                    <option value="Legal">Legal</option>
+                    <option value="Media">Media</option>
+                    <option value="Ministry Office">Ministry Office</option>
+                    <option value="Natural Resource">Natural Resource</option>
+                    <option value="Policy Planning and Monitoring">Policy Planning and Monitoring</option>
+                    <option value="Secretary Staff">Secretary Staff</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Date: <span class="required_star">*</span> <br> <span class="small_msg">(auto-filled)</span></td>
+                <td>
+                    <input id="datePicker_rep" name="date" placeholder="" required type="date">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Device Type: <span class="required_star">*</span></td>
+                <td><input id="device_type_rep" list="devices" name="device_type" placeholder="Laptop/Desktop/Other"
+                           required type="text" value="">
+                    <datalist id="devices">
+                        <option value="Desktop"></option>
+                        <option value="Laptop"></option>
+                        <option value="Printer"></option>
+                        <option value="Scanner"></option>
+                        <option value="Other"></option>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>Device's Serial No.:</td>
+                <td><input id="device_serial_rep" name="device_serial" placeholder="Product serial number" type="text"
+                           value=""></td>
+            </tr>
+            <tr>
+                <td><label for="issue_rep">Issue: <span class="required_star">*</span> <br> <span class="small_msg">(in brief)</span></label>
+                </td>
+                <td rowspan="3"><textarea id="issue_rep" name="issue" placeholder="Your issue in brief" required
+                                          rows="6"></textarea></td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <pre> </pre>
+                </td>
+            </tr>
+        </table>
+
+        <div class="form_buttons">
+            <button class="submit_btn" name="submit" type="submit">Submit</button>
+            <button class="cancel_btn" id="repair_cancelBtn" name="clear">Cancel</button>
+        </div>
+        <br>
+    </form>
+</div>
+
+<div class="tab" id="page2">
+    <form action="" id="service_form" method="POST" name="service_form">
+
+        <div class="titleBox">
+            <h1 class="title">Service Form</h1>
+        </div>
+
+        <!-- Code for the tab buttons -->
+        <div class="tab_bar">
+            <div class="tab_button" onclick="showTab('page1')">Repair</div>
+            <div class="tab_button active_button" onclick="showTab('page2')">Service</div>
+        </div>
+
+        <table width="1024px">
+            <tr>
+                <td class="table_left">Employee ID: <span class="required_star">*</span></td>
+                <td class="table_right"><input autofocus id="emp_id_svc" name="emp_id" placeholder="Enter your ID"
+                                               required type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>Employee Name <br> <span class="small_msg">(with initials)</span>: <span
+                        class="required_star">*</span></td>
+                <td><input id="emp_name_svc" name="emp_name" placeholder="Ex: ABC Rajapakse" required type="text"></td>
+            </tr>
+            <tr>
+                <td>Designation:</td>
+                <td><input id="emp_designation_svc" name="emp_designation" placeholder="Enter your designation"
+                           type="text"></td>
+            </tr>
+            <tr>
+                <td>Employee Division: <span class="required_star">*</span></td>
+                <td><select id="emp_div_svc" name="emp_div">
+                    <option disabled selected value="">-Select your division-</option>
+                    <option value="Accounts">Accounts</option>
+                    <option value="Additional Secretary Office">Additional Secretary Office</option>
+                    <option value="Administration">Administration</option>
+                    <option value="Air Resource Management and National Ozone Unit">Air Resource Management and
+                        National
+                        Ozone Unit
+                    </option>
+                    <option value="Bio Diversity">Bio Diversity</option>
+                    <option value="Climate Change">Climate Change</option>
+                    <option value="Environment Education Training, Promotion and Special Project">Environment Education Training, Promotion and Special Project</option>
+                    <option value="Environmental Pollution Control and Chemical Management">Environmental Pollution
+                        Control
+                        and Chemical Management
+                    </option>
+                    <option value="Environmental Planning and Economic">Environmental Planning and Economic</option>
+                    <option value="Human Resource Development">Human Resource Development</option>
+                    <option value="ICT Unit">ICT Unit</option>
+                    <option value="Internal Audit">Internal Audit</option>
+                    <option value="International Relation">International Relation</option>
+                    <option value="Investigation">Investigation</option>
+                    <option value="Legal">Legal</option>
+                    <option value="Media">Media</option>
+                    <option value="Ministry Office">Ministry Office</option>
+                    <option value="Natural Resource">Natural Resource</option>
+                    <option value="Policy Planning and Monitoring">Policy Planning and Monitoring</option>
+                    <option value="Secretary Staff">Secretary Staff</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>Date: <span class="required_star">*</span> <br> <span class="small_msg">(auto-filled)</span></td>
+                <td><input id="datePicker_svc" name="date" type="date" width="50px"></td>
+            </tr>
+            <tr>
+                <td>Service: <span class="required_star">*</span> <br> <span class="small_msg">(in brief)</span></td>
+                <td rowspan="3"><textarea id="service_svc" name="service" placeholder="Your required service in brief"
+                                          required rows="8"></textarea></td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <pre> </pre>
+                </td>
+            </tr>
+        </table>
+
+        <div class="form_buttons">
+            <button class="submit_btn" id="submitBtn" name="submit" type="submit">Submit</button>
+            <button class="cancel_btn" id="service_cancelBtn" name="clear">Cancel</button>
+        </div>
+        <br>
+        <br>
+    </form>
+</div>
+
+
+<!--Toggling between tabs-->
+<script>
+    function showTab(tabId) {
+        const tabs = document.querySelectorAll('.tab');
+        const tabButtons = document.querySelectorAll('.tab_button');
+
+        tabs.forEach(tab => {
+            if (tab.id === tabId) {
+                tab.classList.add('active');
+                clearRepair(tab.id);
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+    }
+
+    function clearRepair(type) {
+        if (type === 'page2') {
+            document.getElementById("emp_id_rep").value = "";
+            document.getElementById("emp_name_rep").value = "";
+            document.getElementById("emp_designation_rep").value = "";
+            document.getElementById("emp_div_rep").selectedIndex = 0;
+            document.getElementById("device_type_rep").value = "";
+            document.getElementById("device_serial_rep").value = "";
+            document.getElementById("issue_rep").value = "";
+        } else {
+            document.getElementById("emp_id_svc").value = "";
+            document.getElementById("emp_name_svc").value = "";
+            document.getElementById("emp_designation_svc").value = "";
+            document.getElementById("emp_div_svc").selectedIndex = 0;
+            document.getElementById("service_svc").value = "";
+        }
+
+    }
+
+    // Disabling Datepicker
+    document.getElementById("datePicker_rep").valueAsDate = new Date();
+    document.getElementById("datePicker_rep").disabled = true;
+    document.getElementById("datePicker_svc").valueAsDate = new Date();
+    document.getElementById("datePicker_svc").disabled = true;
+
+
+    $(document).ready(function () {
+        $('#request_form').submit(function (e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+
+            // Get form data here and perform checks
+            let empId = $('#emp_id_rep').val();
+            let empName = $('#emp_name_rep').val();
+            let empDesignation = $('#emp_designation_rep').val();
+            let empDiv = $('#emp_div_rep').val();
+            let deviceType = $('#device_type_rep').val();
+            let deviceSerial = $('#device_serial_rep').val();
+            let serviceRequest = $('#issue_rep').val();
+            let tableSource = 'repair';
+
+            inserData(empId, empName, empDesignation, empDiv, deviceType, deviceSerial, serviceRequest, tableSource);
+        });
+    });
+
+    $(document).ready(function () {
+        $('#service_form').submit(function (e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+
+            // Get form data here and perform checks
+            let empId = $('#emp_id_svc').val();
+            let empName = $('#emp_name_svc').val();
+            let empDesignation = $('#emp_designation_svc').val();
+            let empDiv = $('#emp_div_svc').val();
+            let deviceType = "";
+            let deviceSerial = "";
+            let serviceRequest = $('#service_svc').val();
+            let tableSource = 'service';
+
+            inserData(empId, empName, empDesignation, empDiv, deviceType, deviceSerial, serviceRequest, tableSource);
+        });
+    });
+
+    function inserData(empId, empName, empDesignation, empDiv, deviceType, deviceSerial, serviceRequest, tableSource) {
+        // Use $.ajax to send data to process_request.php
+        $.ajax({
+            url: 'php/process_request.php',
+            method: 'POST',
+            data: {
+                // Key-value pairs for form fields
+                formData: {
+                    emp_id: empId,
+                    emp_name: empName,
+                    emp_designation: empDesignation,
+                    emp_div: empDiv,
+                    device_type: deviceType,
+                    device_serial: deviceSerial,
+                    service_request: serviceRequest,
+                    // issue: issue,
+                    // service: service,
+                    table_source: tableSource
+                }
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.success) {
+                    Swal.fire({
+                        title: "Request submitted!",
+                        html: "Use below request ID to view progress.<br>Request ID: <b>" + data.requestID + "</b>",
+                        icon: "success",
+                        confirmButtonText: "Ok",
+                        backdrop: 'rgba(0,0,0,0.6)'
+                    }).then(function () {
+                        window.location.href = "";
+                    });
+                } else {
+                    // Handle duplicate entry with a Swal.fire alert
+                    Swal.fire({
+                        title: "Duplicate Entry",
+                        text: "This request has already been submitted.",
+                        html: "Use below request ID to view progress.<br>Request ID: <b>" + data.requestID + "</b>",
+                        icon: "error",
+                        confirmButtonText: "Ok",
+                        backdrop: 'rgba(0,0,0,0.6)'
+                    });
+                }
+            },
+            error: function () {
+                console.log("Failed to submit request");
+            }
+        });
+    }
+
+</script>
+</body>
+</html>

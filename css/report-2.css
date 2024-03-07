@@ -1,0 +1,273 @@
+
+button.options {
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100px;
+    max-width: 100px;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.1s;
+    color: #383333;
+    border: 1px solid rgba(8, 168, 0, 0.75);
+    border-radius: 5px;
+    background-color: hsla(117, 100%, 33%, 0.1);
+}
+
+button.options:hover {
+    transition: 0.1s;
+    border: 1px solid rgba(7, 168, 0, 0.4);
+    background-color: hsla(117, 100%, 33%, 0.3);
+}
+
+button.options.enabled:active {
+    width: 95px;
+    margin: 5pt 2pt 5pt 4.25pt;
+    padding: 2.5pt;
+    transition: 0.15s;
+    border: 1px solid rgba(8, 168, 0, 0.6);
+    background-color: hsla(117, 100%, 33%, 0.5);
+}
+
+
+/* Disabled button */
+button.options.disabled {
+    cursor: unset;
+    color: rgba(56, 51, 51, 0.5);
+    border: 1px solid rgba(153, 153, 153, 0.75);
+    background-color: hsla(0, 0%, 60%, 0.1);
+}
+
+button.options.disabled:hover {
+    transition: 0.1s;
+    border: 1px solid rgba(153, 153, 153, 0.75);
+    background-color: hsla(0, 0%, 60%, 0.1);
+}
+
+
+/* Declined button */
+button.options.declined {
+    cursor: unset;
+    color: rgba(255, 0, 0, 0.75);
+    border: 1px solid rgba(255, 0, 0, 0.1);
+    background-color: hsla(0, 100%, 50%, 0.1);
+}
+
+button.options.declined:hover {
+    transition: 0.1s;
+    border: 1px solid rgba(255, 0, 0, 0.1);
+    background-color: hsla(0, 100%, 50%, 0.1);
+}
+
+
+/* Request Completed button */
+button.options.requestCompl {
+    cursor: unset;
+    color: rgba(100, 0, 170, 0.73);
+    border: 1px solid rgba(191, 0, 255, 0.1);
+    background-color: rgb(191, 0, 255, 0.1);
+}
+
+button.options.requestCompl:hover {
+    transition: 0.1s;
+    border: 1px solid rgba(191, 0, 255, 0.1);
+    background-color: rgba(191, 0, 255, 0.1);
+}
+
+
+/* Request Failed but Completed button */
+button.options.requestCompl.outsourced {
+    cursor: unset;
+    color: rgba(100, 0, 170, 0.73);
+    border: 1px solid rgba(191, 0, 255, 0.1);
+    background-color: rgb(191, 0, 255, 0.1);
+}
+
+button.options.requestCompl.outsourced:hover {
+    transition: 0.1s;
+    border: 1px solid rgba(191, 0, 255, 0.1);
+    background-color: rgba(191, 0, 255, 0.1);
+}
+
+
+/* Update status button */
+button.options.updateStatus {
+    transition: 0.1s;
+    color: rgb(160, 130, 0);
+    border: 2px solid rgba(217, 170, 0, 0.75);
+    background-color: hsla(44, 100%, 50%, 0.1);
+}
+
+button.options.updateStatus:hover {
+    transition: 0.1s;
+    border: 2px solid rgba(217, 170, 0, 0.4);
+    background-color: hsla(44, 100%, 50%, 0.3);
+}
+
+button.options.updateStatus:active {
+    margin: 7.5px;
+    transition: 0.15s;
+    border: 2px solid rgba(217, 170, 0, 0.6);
+    background-color: hsla(44, 100%, 50%, 0.5);
+}
+
+
+/* Start Repair button */
+button.options.startRepair {
+    transition: 0.1s;
+    /*color: rgb(56, 51, 51);*/
+    color: rgb(115, 46, 9);
+    border: 2px solid rgba(115, 46, 9, 0.75);
+    background-color: rgba(115, 46, 9, 0.10);
+}
+
+button.options.startRepair:hover {
+    transition: 0.1s;
+    border: 2px solid rgba(115, 46, 9, 0.4);
+    background-color: rgba(115, 46, 9, 0.3);
+}
+
+button.options.startRepair:active {
+    margin: 7.5px;
+    transition: 0.15s;
+    /*color: black;*/
+    border: 2px solid rgba(115, 46, 9, 0.6);
+    background-color: rgba(115, 46, 9, 0.5);
+}
+
+/* Start Service button */
+button.startService {
+    transition: 0.1s;
+    /*color: rgb(56, 51, 51);*/
+    color: rgb(0, 50, 180);
+    border: 2px solid rgba(0, 69, 255, 0.75);
+    background-color: rgba(0, 69, 255, 0.1);
+}
+
+button.startService:hover {
+    transition: 0.1s;
+    border: 2px solid rgba(0, 69, 255, 0.4);
+    background-color: rgba(0, 69, 255, 0.3);
+}
+
+button.options.startService:active {
+    margin: 7.5px;
+    transition: 0.15s;
+    color: black;
+    border: 2px solid rgba(0, 69, 255, 0.6);
+    background-color: rgba(0, 69, 255, 0.5);
+}
+
+/* Finish Repair/Service button */
+button.finishService {
+    transition: 0.1s;
+    color: rgb(0, 120, 0);
+    border: 2px solid rgba(0, 120, 0, 0.75);
+    background-color: rgba(0, 255, 0, 0.1);
+}
+
+button.finishService:hover {
+    transition: 0.1s;
+    border: 2px solid rgba(0, 120, 0, 0.4);
+    background-color: rgba(0, 255, 0, 0.3);
+}
+
+button.options.finishService:active {
+    margin: 7.5px;
+    transition: 0.15s;
+    color: black;
+    border: 2px solid rgba(0, 201, 31, 0.6);
+    background-color: rgba(0, 201, 31, 0.5);
+}
+
+
+/* Failed Repair/Service button */
+button.finishService.outsourced {
+    transition: 0.1s;
+    color: rgb(56, 51, 51);
+    border: 2px solid rgba(148, 0, 211, 0.6);
+    background-color: rgba(150, 255, 50, 0.1);
+}
+
+button.finishService.outsourced:hover {
+    transition: 0.1s;
+    border: 2px solid rgba(148, 0, 211, 0.4);
+    background-color: rgba(150, 255, 50, 0.4);
+}
+
+button.options.finishService.outsourced:active {
+    margin: 7.5px;
+    transition: 0.15s;
+    color: black;
+    border: 2px solid rgba(201, 0, 0, 0.6);
+    background-color: rgba(150, 255, 50, 0.5);
+}
+
+.outsourced span {
+    font-size: 0.8em;
+    font-weight: 600;
+    color: darkviolet;
+}
+
+
+i.fa-solid.fa-check.big {
+    font-size: 2.5em;
+}
+
+i.fa-solid.fa-xmark.big {
+    font-size: 2.5em;
+}
+
+i.fa-solid {
+    /*margin: 5px 0;*/
+    /*color: black;*/
+    /*margin-right: 5px;*/
+}
+
+.options_group {
+    display: flex;
+    align-content: space-around;
+    align-items: stretch;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+th {
+    vertical-align: middle;
+}
+
+
+p.default {
+    font-size: 1em;
+}
+
+b {
+    font-weight: 600;
+}
+
+.options_column {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+
+/*RESPONSIVE*/
+/*===========*/
+
+@media (max-width: 1280px) {
+}
+
+
+@media (max-width: 900px) {
+}
+
+@media (max-width: 520px) {
+}
+

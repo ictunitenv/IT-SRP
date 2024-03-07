@@ -1,0 +1,485 @@
+* {
+    overflow-anchor: none !important;
+}
+
+body {
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: rgba(0, 196, 17, 0.05);
+}
+
+form {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    max-width: 1088px;
+    margin: 45px auto;
+    padding: 40px;
+    transition: 0.2s;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.075);
+}
+
+.titleBox {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: fit-content;
+    margin: 40px auto;
+    padding: 12px 40px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 0 20px rgb(0 0 0 / 3%);
+}
+
+h1.title {
+    font-size: 2em;
+    font-weight: revert;
+    margin-bottom: auto;
+}
+
+div .all_item_fields {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+}
+
+.item_field.withFrame {
+    width: 100%;
+    min-width: 500px;
+    height: 198px;
+    margin-bottom: 50px;
+    padding: 25px 15px 15px 15px;
+    transition: 0.8s opacity, 0.8s height;
+    animation: ItemFieldSlideIn 0.8s ease 1 normal forwards;
+    border: 2pt solid rgba(0, 51, 0, 0.55);
+    border-radius: 10px;
+}
+
+.item_remove.withFrame {
+    width: 100%;
+    min-width: 500px;
+    height: 198px;
+    margin-bottom: 50px;
+    padding: 25px 15px 15px 15px;
+    transition: 0.8s opacity, 0.8s height;
+    animation: ItemFieldSlideOut 0.8s ease 1 normal forwards;
+    border: 2pt solid rgba(0, 51, 0, 0.55);
+    border-radius: 10px;
+}
+
+.Rqstr_details.withFrame {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 5px 40px 5px;
+}
+
+span.item_label {
+    font-weight: 600;
+    margin: -40px 0 0 2px;
+    padding: 0 5px;
+    color: #003300d6;
+    background: white;
+}
+
+.small_label {
+    font-size: 0.75em;
+    margin-left: 3px
+}
+
+table {
+    width: 100%;
+    transition: 0.2s;
+}
+
+.table_one {
+    font-size: 0.8em;
+}
+
+.item_field_table {
+    /*margin-top: 10px;*/
+    border-spacing: 10px 0;
+}
+
+td.table_left {
+    /*width: 20%;*/
+}
+
+td.table_right {
+    /*width: 80%;*/
+}
+
+table td {
+    padding: 5px;
+}
+
+td.req_detail_label {
+    text-align: end;
+}
+
+td.amt {
+    width: 50%;
+}
+
+form td .small_msg {
+    /*font-size: 0.7em;*/
+    /*font-weight: 400;*/
+    /*color: rgb(86, 86, 86);*/
+}
+
+.required_star {
+    font-weight: bold;
+    margin-right: 2px;
+    vertical-align: top;
+    color: red;
+}
+
+.required_star.redLabel {
+    display: none;
+    -webkit-animation: wobble-hor-bottom 0.6s both;
+    animation: wobble-hor-bottom 0.6s both;
+    /*animation: redLabelFadeIn 0.5s ease-out;*/
+}
+
+.close_item_button {
+    font-weight: 500;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    width: 23px;
+    height: 23px;
+    margin: -172px -9px auto auto;
+    /*padding-top: 2px;*/
+    cursor: pointer;
+    border: 2px solid red;
+    border-radius: 50%;
+    background-color: white;
+    transition: 0.2s;
+    /*box-shadow: 0 0 10px 2px rgb(255 0 0 / 50%);*/
+}
+
+.close_item_button:hover {
+    transition: 0.2s;
+    background-color: red;
+    box-shadow: 0 0 15px 4px rgb(255 0 0 / 50%);
+}
+
+.close_item_button:hover > .fa-x {
+    transition: 0.2s;
+    color: white;
+}
+
+.fa-x {
+    font-size: small;
+    transition: 0.2s;
+    color: red;
+}
+
+span.req_statement {
+    align-self: start;
+    margin-bottom: 25px;
+}
+
+.current_date {
+    align-self: start;
+    width: 240px;
+    margin-bottom: 30px;
+    padding: 5px;
+    text-align: center;
+    color: darkgreen;
+    border-radius: 6px;
+    background: none;
+    background: rgba(0, 200, 0, 0.15);
+}
+
+input,
+select,
+textarea {
+    /*display: flex;*/
+    font-weight: 500;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 0;
+    padding: 10px;
+    color: black;
+    border: 1px solid rgb(0 86 0 / 40%);
+    border-radius: 4px;
+    background-color: hsl(138deg 100% 98% / 30%);
+}
+
+.Rqstr_details.withFrame input,
+.Rqstr_details.withFrame select,
+.Rqstr_details.withFrame textarea {
+    float: right;
+    width: 95%;
+}
+
+
+.disabled::placeholder { /* Disabled input field placeholder color*/
+    color: #b4b4b4;
+}
+
+input:hover,
+select:hover,
+textarea:hover {
+    outline: 1px solid rgba(0, 51, 0, 0.3);
+    /*outline: var(--input_outline);*/
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 1px solid rgb(0, 86, 0);
+}
+
+input[type="date"] {
+    border: 1px solid rgba(204, 204, 204, 0);
+    background-color: hsla(210, 5%, 77%, 0.32);
+}
+
+textarea.item_note {
+    width: auto;
+    padding-right: 24px;
+    resize: none;
+    height: 120px;
+    margin-bottom: -7px;
+}
+
+.disabledOption {
+    color: #888888;
+}
+
+.amount {
+    /*margin: 15px;*/
+}
+
+.form_buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+button {
+    margin: 0 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.2s;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(0 69 0 / 80%);
+}
+
+.cancel_btn {
+    font-weight: 500;;
+    color: black;
+    background-color: #a5b5a5a6;
+}
+
+.add_new_item {
+    align-self: center;
+    height: 55px;
+    padding: 0 100px;
+}
+
+.new_item_btn {
+    display: flex;
+    align-items: center;
+    height: 55px;
+    padding: 0 100px;
+    color: darkgreen;
+    border: 2px solid darkgreen;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.new_item_btn:focus {
+    outline: 1px solid rgba(1, 138, 1, 0.8);
+    border: 1px solid rgba(1, 138, 1, 0.8);
+    transition: 0.1s;
+    color: darkgreen;
+    background-color: rgba(1, 138, 1, 0.1);
+}
+
+.new_item_btn:hover {
+    border: 2px solid rgba(1, 138, 1, 0);
+}
+
+.new_item_btn:active {
+    height: 51px;
+    padding: 0 96px;
+}
+
+button:hover {
+    transition: 0.1s;
+    color: #fff;
+    background-color: rgba(1, 138, 1, 0.8);
+}
+
+button:active {
+    margin: 1px 6px;
+    padding: 9px 19px;
+    transition: 0.1s;
+    color: #fff;
+    background-color: rgba(0, 180, 0, 0.8);
+}
+
+
+/*RESPONSIVE*/
+/*===========*/
+
+
+@media (max-width: 1280px) {
+    form {
+        max-width: 85%;
+        padding: 25px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .current_date {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 1100px) {
+    div .all_item_fields {
+        width: 90%;
+    }
+}
+
+@media (max-width: 900px) {
+    button {
+        /*width: 65%;*/
+        /*transition: 0.2s;*/
+    }
+
+}
+
+@media (max-width: 540px) {
+    form {
+        max-width: 90%;
+        margin: 50px auto;
+        transition: 0.2s;
+        border-radius: 20px 20px 20px 20px;
+    }
+
+}
+
+/* ----------------------------------------------
+ * Generated by Animista on 2023-11-10 17:37:5
+ * Licensed under FreeBSD License.
+ * See http://animista.net/license for more info.
+ * w: http://animista.net, t: @cssanimista
+ * ---------------------------------------------- */
+
+/**
+ * ----------------------------------------
+ * animation wobble-hor-bottom
+ * ----------------------------------------
+ */
+
+/*@-webkit-keyframes wobble-hor-bottom {*/
+/*    0%,*/
+/*    100% {*/
+/*        -webkit-transform: translateX(0%);*/
+/*        transform: translateX(0%);*/
+/*        -webkit-transform-origin: 50% 50%;*/
+/*        transform-origin: 50% 50%;*/
+/*    }*/
+/*    15% {*/
+/*        -webkit-transform: translateX(-10px) rotate(-2deg);*/
+/*        transform: translateX(-10px) rotate(-2deg);*/
+/*    }*/
+/*    30% {*/
+/*        -webkit-transform: translateX(5px) rotate(2deg);*/
+/*        transform: translateX(5px) rotate(2deg);*/
+/*    }*/
+/*    45% {*/
+/*        -webkit-transform: translateX(-5px) rotate(-1.2deg);*/
+/*        transform: translateX(-5px) rotate(-1.2deg);*/
+/*    }*/
+/*    60% {*/
+/*        -webkit-transform: translateX(3px) rotate(0.8deg);*/
+/*        transform: translateX(3px) rotate(0.8deg);*/
+/*    }*/
+/*    75% {*/
+/*        -webkit-transform: translateX(-2px) rotate(-0.4deg);*/
+/*        transform: translateX(-2px) rotate(-0.4deg);*/
+/*    }*/
+/*}*/
+
+@keyframes wobble-hor-bottom {
+    0%,
+    100% {
+        -webkit-transform: translateX(0%);
+        transform: translateX(0%);
+        -webkit-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+    }
+    15% {
+        -webkit-transform: translateX(-10px) rotate(-2deg);
+        transform: translateX(-10px) rotate(-2deg);
+    }
+    30% {
+        -webkit-transform: translateX(5px) rotate(2deg);
+        transform: translateX(5px) rotate(2deg);
+    }
+    45% {
+        -webkit-transform: translateX(-5px) rotate(-1.2deg);
+        transform: translateX(-5px) rotate(-1.2deg);
+    }
+    60% {
+        -webkit-transform: translateX(3px) rotate(0.8deg);
+        transform: translateX(3px) rotate(0.8deg);
+    }
+    75% {
+        -webkit-transform: translateX(-2px) rotate(-0.4deg);
+        transform: translateX(-2px) rotate(-0.4deg);
+    }
+}
+
+/*Animate when adding a new item field on button click*/
+@keyframes ItemFieldSlideIn {
+    0% {
+        opacity: 0;
+        transform: rotateX(-100deg);
+        transform-origin: top;
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg);
+        transform-origin: top;
+    }
+}
+
+/*Animate item field removal on button click*/
+@keyframes ItemFieldSlideOut {
+    0% {
+        opacity: 1;
+        transform: rotateX(0deg);
+        transform-origin: top;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotateX(70deg);
+        transform-origin: top;
+    }
+}
+

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Request Progress</title>
+    <!--    TODO -> Change titles across all pages -->
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="css/libraries/bootstrap.css" rel="stylesheet">
+    <script src="js/libraries/bootstrap.bundle.js"></script>
+    <script rel="text/javascript" src="js/progress.js"></script>
+
+    <link href="css/font-family.css" rel="stylesheet"/>
+    <link href="css/headerSection.css" rel="stylesheet"/>
+    <link href="css/progress.css" rel="stylesheet"/>
+    <link href="css/libraries/sweetalert2.css" rel="stylesheet">
+
+    <script src="js/libraries/sweetalert2.all.js"></script>
+    <script src="js/libraries/jquery-3.6.0.js"></script>
+</head>
+
+<header>
+    <div class="logoBx" onclick="window.location.href='index.html';">
+        <img alt="image" class="logo_png" src="./img/logo_placeholder.png"/>
+        <h1 class="logo_text">IT Unit <br/> Service Request Portal</h1>
+    </div>
+    <div class="help_link">
+        <a href="help.html"><img alt="Help Icon" class="help-png" id="help-icon" src="img/help.png"></a>
+        <a href="help.html"><p class="help_label">Help</p></a>
+    </div>
+</header>
+
+<body>
+<div class="titleBox">
+    <h1 class="title">Check Request Progress</h1>
+</div>
+
+<div class="card-content">
+    <form action="#" class="search_form">
+        <div class="input_section">
+            <label for="searchInput">Search:</label>
+            <input id="searchInput" name="search_input" placeholder="Enter request ID" type="text" value="">
+        </div>
+        <button id="search_btn" type="button">Search</button>
+    </form>
+
+    <div class="progress_section" id="progressSection">
+        <div class="labels" id="labels">
+            <table class="label_table" id="labelTable">
+                <tbody id="tableBody" valign="top">
+                <tr>
+                    <td class="left_left">
+                        <span class="label">Request ID : &ensp; </span>
+                    </td>
+                    <td class="left_right">
+                        <span class="value" id="valueReqId">dummy-request-id</span>
+                    </td>
+                    <td class="" rowspan="10" style="height: fit-content; width: 48%">
+                        <table>
+                            <tr>
+                                <td class="right_left" style="vertical-align: top">
+                                    <span class="label" id="ServInfo">Repair/Service : </span>
+                                </td>
+                                <td class="right_right">
+                                    <span class="value" id="valueServInfo">dummy-service</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right_left">
+                                    <span class="label" id="devType">Device type : </span>
+                                </td>
+                                <td class="right_right">
+                                    <span class="value" id="valueDevType">dummy-device</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="right_left">
+                                    <span class="label" id="serialNo">Serial No : </span>
+                                </td>
+                                <td class="right_right">
+                                    <span class="value" id="valueSerial">dummy-serial</span>
+                                </td>
+                            </tr>
+                            <tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left_left">
+                        <span class="label">Name : &ensp; </span>
+                    </td>
+                    <td class="left_right">
+                        <span class="value" id="valueName">dummy-name + (designation)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left_left">
+                        <span class="label">Division : &ensp; </span>
+                    </td>
+                    <td class="left_right">
+                        <span class="value" id="valueDiv">dummy-division</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left_left">
+                        <span class="label">Requested Date : &ensp; </span>
+                    </td>
+                    <td class="left_right">
+                        <span class="value" id="valueDate">dummy-2001-01-01</span><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="label_table" id="noReqIdTable">
+                <tbody valign="top">
+                <tr>
+                    <td align="center" class="empty_table">Enter your request ID to see the progress.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="label_table" id="noLabelsTable">
+                <tbody valign="top">
+                <tr>
+                    <td align="center" class="empty_table">No records available.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <table class="label_table" id="noValidReqIdTable">
+                <tbody valign="top">
+                <tr>
+                    <td align="center" class="empty_table">Request ID does not exist.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="progress_steps" id="progressSteps">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                    <a class="nav-link completed" href="#" id="req_sub_step"></a>
+                    <a class="abc" href="#" id="req_sub_icon"><img src="img/complete.png"></a>
+                    <div id="req_sub_text" class="step_description"><b>Request Submitted</b></div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link completed" href="#" id="div_dir_step"></a>
+                    <a class="abc" href="#" id="div_dir_icon"></a>
+                    <div id="div_dir_text" class="step_description">Director's Approval<span style="font-size: small">(Divisional)</span></div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link declined" href="#" id="ict_dir_step"></a>
+                    <a class="abc" href="#" id="ict_dir_icon"></a>
+                    <div class="step_description" id="ict_dir_text">Director's Approval<span style="font-size: small">(Environment Education Training, and Special Project)</span>
+                    </div>
+                </li>
+                <li class="nav-item clickable" id="repStatusItem">
+                    <a class="nav-link not-started clickable" href="#" id="rep_status_step"></a>
+                    <a class="abc clickable" href="#" id="rep_status_icon"></a>
+                    <div class="click_here_banner" id="clickHereBanner" style="display: none"> Click for more info</div>
+                    <div id="rep_status_text" class="step_description">ICT Unit</div>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link not-started" href="#" id="finish_step"></a>
+                    <a class="abc" href="#" id="finish_icon"></a>
+                    <div id="finish_text" class="step_description">Request Completion</span></div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+    // Trigger updateProgress() when search button is clicked
+    document.getElementById("search_btn").addEventListener("click", function (event) {
+        updateProgress();
+    });
+
+    // Add an event listener for key press events on the input field
+    document.getElementById("searchInput").addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent the default Enter key behavior (e.g., form submission)
+            // Trigger the updateProgress function
+            updateProgress();
+        }
+    });
+</script>
+
+</body>
+</html>

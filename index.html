@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>IT Unit Service Request Portal - Ministry of Environment</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="css/font-family.css" rel="stylesheet"/>
+    <link href="css/headerSection.css" rel="stylesheet"/>
+    <link href="css/index.css" rel="stylesheet"/>
+</head>
+
+<header>
+    <div class="logoBx" onclick="window.location.href='#';">
+        <img alt="image" class="logo_png" src="./img/logo_placeholder.png"/>
+        <h1 class="logo_text">IT Unit <br/> Service Request Portal</h1>
+    </div>
+    <div class="help_link">
+        <a href="help.html"><img alt="Help Icon" class="help-png" id="help-icon" src="img/help.png"></a>
+        <a href="help.html"><label class="help_label" for="help-icon">Help</label></a>
+    </div>
+</header>
+
+<body>
+<section class="home_page" id="home">
+    <div class="row">
+        <div class="col50_left">
+            <div class="text_left">
+                <div class="big"><h1>Request</h1></div>
+                <div class="bold"><p>SERVICE / REPAIR</p></div>
+            </div>
+            <button onclick="window.location.href='request.html';">MAKE A REQUEST</button>
+            <button onclick="window.location.href='progress.html';">CHECK PROGRESS</button>
+        </div>
+
+        <div class="col50_right">
+            <div class="big" id="login_banner"><h1>Login</h1></div>
+            <!--            <div class='bold'><p>MANAGE / APPROVE</p></div>-->
+            <button class="open_form_btn" id="open_form_btn" onclick="openForm()">LOGIN HERE</button>
+
+            <div class="login_popup" id="login_form">
+                <form action="php/login.php" class="form_container" method="post">
+                    <div class="login_label"><h1>Login</h1></div>
+                    <!--                    <label class="username_label" for="uname"><b>Username</b></label>-->
+                    <input id="uname" name="username" placeholder="Username" required type="text">
+                    <!--                    <label class="password_label" for="pword"><b>Password</b></label>-->
+                    <input id="pword" name="password" placeholder="Password" required type="password">
+                    <button class="submit_btn" type="submit">Login</button>
+                    <button class="close_btn" onclick="closeForm()" type="button">Cancel</button>
+                </form>
+                <script>
+                    function openForm() {
+                        document.getElementById("login_form").style.display = "flex";
+                        document.getElementById("open_form_btn").style.display = "none";
+                        document.getElementById("login_banner").style.display = "none";
+                        document.getElementById("login_banner").style.fontSize = "1.5em";
+                    }
+
+                    function closeForm() {
+                        document.getElementById("login_form").style.display = "none";
+                        document.getElementById("open_form_btn").style.display = "block";
+                        document.getElementById("login_banner").style.display = "block";
+                        document.getElementById("login_banner").style.fontSize = "3.5em";
+                    }
+
+                </script>
+            </div>
+        </div>
+
+        <!--        <div class="col50_right hidden"  onclick="openForm_hidden()">-->
+        <!--            <div class="big" id="login_banner2"><h1>Login</h1></div>-->
+        <!--            &lt;!&ndash;            <div class='bold'><p>MANAGE / APPROVE</p></div>&ndash;&gt;-->
+        <!--&lt;!&ndash;            <button id="open_form_btn2" class="open_form_btn" onclick="openForm()">LOGIN HERE</button>&ndash;&gt;-->
+
+        <!--            <div class="login_popup" id="login_form2">-->
+        <!--                <form action="login.php" class="form_container" method="post">-->
+        <!--                    <label for="username2"><b>Username</b></label>-->
+        <!--                    <input id="username2" name="uname" placeholder="Username" required type="text">-->
+        <!--                    <label for="password2"><b>Password</b></label>-->
+        <!--                    <input id="password2" name="pword" placeholder="Password" required type="password">-->
+        <!--                    <button class="submit_btn" type="submit">Login</button>-->
+        <!--                    <button class="close_btn" onclick="closeForm_hidden()" type="button">Cancel</button>-->
+        <!--                </form>-->
+        <!--                <script>-->
+        <!--                    function openForm_hidden() {-->
+        <!--                        document.getElementById("login_form2").style.display = "block";-->
+        <!--                        document.getElementById("open_form_btn2").style.display = "none";-->
+        <!--                        document.getElementById("login_banner2").style.fontSize = "1.5em";-->
+        <!--                    }-->
+
+        <!--                    function closeForm_hidden() {-->
+        <!--                        document.getElementById("login_form2").style.display = "none";-->
+        <!--                        document.getElementById("open_form_btn2").style.display = "block";-->
+        <!--                        document.getElementById("login_banner2").style.fontSize = "3.5em";-->
+        <!--                    }-->
+        <!--                </script>-->
+        <!--            </div>-->
+        <!--        </div>-->
+
+    </div>
+</section>
+
+
+</body>
+</html>

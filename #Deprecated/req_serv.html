@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Submit Request - IT Unit Service Request Portal - Ministry of Environment</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link href="../css/font-family.css" rel="stylesheet"/>
+    <link href="../css/request.css" rel="stylesheet"/>
+    <!--    <link href="css/index.css" rel="stylesheet"/>-->
+
+</head>
+
+<header>
+    <div class="logoBx" onclick="window.location.href='index.html';">
+        <img alt="image" class="logo_png" src="../img/logo_placeholder.png"/>
+        <h1 class="logo_text">IT Unit <br/> Service Request Portal</h1>
+    </div>
+    <div class="help_link">
+        <a href="../help.html"><img alt="Help Icon" class="help-png" id="help-icon" src="../img/help.png"></a>
+        <a href="../help.html"><label class="help_label" for="help-icon">Help</label></a>
+    </div>
+</header>
+
+<body>
+<form action="../php/deprecated/submit_request.php" id="request_form" method="post" name="request_form">
+
+    <table width="1024px">
+        <tr>
+            <td width="28%">Employee ID: <span class="required_star">*</span></td>
+            <td width="72%"><input autofocus name="emp_id" placeholder="Enter your ID" required type="text"></td>
+        </tr>
+        <tr>
+            <td>Employee Name <br> <span class="small_msg">(with initials)</span>: <span class="required_star">*</span>
+            </td>
+            <td><input name="emp_name" placeholder="Ex: ABC Rajapakse" required type="text"></td>
+        </tr>
+        <tr>
+            <td>Designation:</td>
+            <td><input name="emp_designation" placeholder="Enter your designation" type="text"></td>
+        </tr>
+        <tr>
+            <td>Employee Division: <span class="required_star">*</span></td>
+            <td><select name="emp_div">
+                <option>Accounts</option>
+                <option>Additional Secretary Office</option>
+                <option>Administration</option>
+                <option>Air Resource Management and National Ozone Unit</option>
+                <option>Bio Diversity</option>
+                <option>Climate Change</option>
+                <option>Environment Education Training, Promotion and Special Project</option>
+                <option>Environmental Pollution Control and Chemical Management</option>
+                <option>Environmental Planning and Economic</option>
+                <option>Human Resource Development</option>
+                <option>ICT Unit</option>
+                <option>Internal Audit</option>
+                <option>International Relation</option>
+                <option>Investigation</option>
+                <option>Legal</option>
+                <option>Media</option>
+                <option>Ministry Office</option>
+                <option>Natural Resource</option>
+                <option>Policy Planning and Monitoring</option>
+                <option>Secretary Staff</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>Date: <span class="required_star">*</span> <br> <span class="small_msg">(auto-filled)</span></td>
+            <td><input id="datePicker" name="date" type="date" width="50px"></td>
+        </tr>
+        <tr>
+            <td>Service: <span class="required_star">*</span></td>
+            <td rowspan="3"><textarea name="service" placeholder="Your issue/required service" required
+                                      rows="9"></textarea></td>
+        </tr>
+        <tr>
+            <td rowspan="2">
+                <pre> </pre>
+            </td>
+        </tr>
+    </table>
+
+    <button name="submit" type="submit">Submit</button>
+    <button name="clear" type="reset">Cancel</button>
+    <br>
+    <br>
+</form>
+<script>
+    document.getElementById("datePicker").valueAsDate = new Date();
+    document.getElementById("datePicker").disabled = true;
+</script>
+
+</body>
+</html>

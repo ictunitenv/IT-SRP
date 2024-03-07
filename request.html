@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Request Form - IT Unit Service Request Portal - Ministry of Environment</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <script src="js/libraries/jquery-3.6.0.js"></script>
+    <script src="js/main.js"></script>
+
+    <link href="css/font-family.css" rel="stylesheet"/>
+    <link href="css/headerSection.css" rel="stylesheet"/>
+    <link href="css/request.css" rel="stylesheet">
+
+    <!-- Include SweetAlert2 -->
+    <link href="css/libraries/sweetalert2.css" rel="stylesheet">
+    <script src="js/libraries/sweetalert2.all.js"></script>
+
+    <style>
+        /*****TAB LAYOUT*****/
+        /*==================*/
+        .tab {
+            display: none;
+            /*margin: 130px auto 40px auto;*/
+        }
+
+        .active {
+            display: block;
+        }
+
+        .tab_bar {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-content: center;
+            align-items: flex-end;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            width: fit-content;
+            margin: -116px 0 0 -23px;
+            transition: 0.2s;
+            box-shadow: 0 0 11px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .tab_button {
+            flex-direction: column;
+            height: 45px;
+            margin-right: -1px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-align: center;
+            border-radius: 0;
+            background-color: hsl(218 100% 95% / 1);
+            box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .active_button {
+            transition: 0.2s;
+            background-color: hsl(223.33deg 100% 68.97%);
+            box-shadow: none;
+            color: white;
+            font-weight: 500;
+        }
+
+        .active_button:hover {
+            background-color: #333333;
+        }
+
+        .tab_button:hover {
+            background-color: hsl(223.62deg 100% 69.02% / 68%);
+        }
+
+        .tab_button.active {
+            background-color: #ccc;
+        }
+
+        td.table_left {
+            width: 20%;
+            min-width: 17%;
+        }
+
+        td.table_right {
+            width: 80%;
+        }
+
+        @media (max-width: 540px) {
+            .tab_bar {
+                width: 100%;
+                margin: -91.3pt 0 0 0;
+                transition: 0.2s;
+            }
+
+            .tab_button {
+                width: 50%;
+                height: 50px;
+                margin-right: unset;
+                padding-top: 12px;
+                transition: 0.2s;
+            }
+
+            td.table_right {
+                width: 70%;
+            }
+
+        }
+
+    </style>
+</head>
+<body>
+<header>
+    <div class="logoBx" onclick="window.location.href='index.html';">
+        <img alt="image" class="logo_png" src="./img/logo_placeholder.png"/>
+        <h1 class="logo_text">IT Unit <br/> Service Request Portal</h1>
+    </div>
+    <div class="help_link">
+        <a href="help.html"><img alt="Help Icon" class="help-png" id="help-icon" src="img/help.png"></a>
+        <a href="help.html"><p class="help_label">Help</p></a>
+    </div>
+</header>
+
+<!-- Tab content -->
+<div class="tab active" id="page1">
+    <!--    TODO : Add <label> tag to all the label texts    -->
+    <form action="" id="request_form" method="POST" name="request_form">
+
+        <div class="titleBox">
+            <h1 class="title">Repair Form</h1>
+        </div>
+
+        <!-- Code for the tab buttons -->
+        <div class="tab_bar">
+            <div class="tab_button active_button" onclick="showTab('page1')">Repair</div>
+            <div class="tab_button" onclick="showTab('page2')">Service</div>
+        </div>
+
+        <table width="1024px">
+            <tr>
+                <td class="table_left">
+                    <label for="emp_id_rep">Employee ID : <span class="required_star">*</span></label>
+                </td>
+                <td class="table_right"><input autofocus id="emp_id_rep" name="emp_id" placeholder="Your Employee ID"
+                                               required type="text">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="emp_name_rep">Employee Name : <span class="required_star">*</span>
+                    <br><span class="small_msg">(with initials)</span></label>
+                </td>
+                <td><input id="emp_name_rep" name="emp_name" placeholder="Ex: ABC Rajapakse" type="text" required></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="emp_designation_rep">Designation :</label>
+                </td>
+                <td><input id="emp_designation_rep" name="emp_designation" placeholder="Eg: Director" type="text"></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="emp_div_rep">Employee Division : <span class="required_star">*</span></label>
+                </td>
+                <td><select id="emp_div_rep" name="emp_div" required>
+                    <option disabled selected value="">-Select your division-</option>
+                    <option value="Accounts">Accounts</option>
+                    <option value="Additional Secretary Office">Additional Secretary Office</option>
+                    <option value="Administration">Administration</option>
+                    <option value="Air Resource Management and National Ozone Unit">Air Resource Management and National Ozone Unit</option>
+                    <option value="Biodiversity">Biodiversity</option>
+                    <option value="Climate Change">Climate Change</option>
+                    <option value="Environment Education Training and Special Project">Environment Education Training
+                        and Special Project
+                    </option>
+                    <option value="Environmental Pollution Control and Chemical Management">Environmental Pollution Control and Chemical Management</option>
+                    <option value="Environmental Planning and Economic">Environmental Planning and Economic</option>
+                    <option value="Human Resource Development">Human Resource Development</option>
+                    <option value="ICT Unit">ICT Unit</option>
+                    <option value="Internal Audit">Internal Audit</option>
+                    <option value="International Relation">International Relation</option>
+                    <option value="Investigation">Investigation</option>
+                    <option value="Legal">Legal</option>
+                    <option value="Media">Media</option>
+                    <option value="Minister Office">Minister Office</option>
+                    <option value="Natural Resource">Natural Resource</option>
+                    <option value="Policy Planning and Monitoring">Policy Planning and Monitoring</option>
+                    <option value="Secretary Staff">Secretary Staff</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="datePicker_rep">Date : <span class="required_star">*</span> <br> <span class="small_msg">(auto-filled)</span></label>
+                </td>
+                <td>
+                    <input id="datePicker_rep" name="date" placeholder="" type="date" required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="device_type_rep">Device Type : <span class="required_star">*</span></label>
+                </td>
+                <td><input id="device_type_rep" list="devices" name="device_type" placeholder="Laptop/Desktop/Other" type="text" value="" required>
+                    <datalist id="devices">
+                        <option value="Desktop"></option>
+                        <option value="Laptop"></option>
+                        <option value="Printer"></option>
+                        <option value="Scanner"></option>
+                        <option value="Other"></option>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="device_serial_rep">Device's Serial No. : <span class="required_star">*</span></label>
+                </td>
+                <td><input id="device_serial_rep" name="device_serial" placeholder="Product serial number" type="text" value="" required></td>
+            </tr>
+            <tr>
+                <td><label for="issue_rep">Issue : <span class="required_star">*</span> <br> <span class="small_msg">(in brief)</span></label>
+                </td>
+                <td rowspan="3"><textarea id="issue_rep" name="issue" placeholder="Your issue in brief" rows="6" required></textarea></td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <pre> </pre>
+                </td>
+            </tr>
+        </table>
+
+        <div class="form_buttons">
+            <button class="submit_btn" name="submit" type="submit">Submit</button>
+            <button class="cancel_btn" id="repair_cancelBtn" name="clear">Cancel</button>
+        </div>
+        <br>
+    </form>
+</div>
+
+<div class="tab" id="page2">
+    <form action="" id="service_form" method="POST" name="service_form">
+
+        <div class="titleBox">
+            <h1 class="title">Service Form</h1>
+        </div>
+
+        <!-- Code for the tab buttons -->
+        <div class="tab_bar">
+            <div class="tab_button" onclick="showTab('page1')">Repair</div>
+            <div class="tab_button active_button" onclick="showTab('page2')">Service</div>
+        </div>
+
+        <table width="1024px">
+            <tr>
+                <td class="table_left">
+                    <label for="emp_id_svc">Employee ID : <span class="required_star">*</span></label>
+                </td>
+                <td class="table_right"><input autofocus id="emp_id_svc" name="emp_id" placeholder="Your Employee ID"
+                                               required type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="emp_name_svc">Employee Name : <span class="required_star">*</span><br> <span class="small_msg">(with initials)</span></label>
+                </td>
+                <td><input id="emp_name_svc" name="emp_name" placeholder="Ex: ABC Rajapakse" type="text" required></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="emp_designation_svc">Designation :</label>
+                </td>
+                <td><input id="emp_designation_svc" name="emp_designation" placeholder="Eg: Director" type="text"></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="emp_div_svc">Employee Division : <span class="required_star">*</span></label>
+                </td>
+                <td><select id="emp_div_svc" name="emp_div" required>
+                    <option disabled selected value="">-Select your division-</option>
+                    <option value="Accounts">Accounts</option>
+                    <option value="Additional Secretary Office">Additional Secretary Office</option>
+                    <option value="Administration">Administration</option>
+                    <option value="Air Resource Management and National Ozone Unit">Air Resource Management and National Ozone Unit</option>
+                    <option value="Biodiversity">Biodiversity</option>
+                    <option value="Climate Change">Climate Change</option>
+                    <option value="Environment Education Training and Special Project">Environment Education Training
+                        and Special Project
+                    </option>
+                    <option value="Environmental Pollution Control and Chemical Management">Environmental Pollution Control and Chemical Management</option>
+                    <option value="Environmental Planning and Economic">Environmental Planning and Economic</option>
+                    <option value="Human Resource Development">Human Resource Development</option>
+                    <option value="ICT Unit">ICT Unit</option>
+                    <option value="Internal Audit">Internal Audit</option>
+                    <option value="International Relation">International Relation</option>
+                    <option value="Investigation">Investigation</option>
+                    <option value="Legal">Legal</option>
+                    <option value="Media">Media</option>
+                    <option value="Minister Office">Minister Office</option>
+                    <option value="Natural Resource">Natural Resource</option>
+                    <option value="Policy Planning and Monitoring">Policy Planning and Monitoring</option>
+                    <option value="Secretary Staff">Secretary Staff</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="datePicker_svc">Date : <span class="required_star">*</span> <br> <span class="small_msg">(auto-filled)</span></label>
+                </td>
+                <td><input id="datePicker_svc" name="date" type="date" width="50px"></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="service_svc">Service : <span class="required_star">*</span> <br> <span class="small_msg">(in brief)</span></label>
+                </td>
+                <td rowspan="3"><textarea id="service_svc" name="service" placeholder="Your required service in brief" rows="8" required></textarea></td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <pre> </pre>
+                </td>
+            </tr>
+        </table>
+
+        <div class="form_buttons">
+            <button class="submit_btn" id="submitBtn" name="submit" type="submit">Submit</button>
+            <button class="cancel_btn" id="service_cancelBtn" name="clear">Cancel</button>
+        </div>
+        <br>
+        <br>
+    </form>
+</div>
+
+
+<!--Toggling between tabs-->
+<script>
+
+    function showTab(tabId) {
+        const tabs = document.querySelectorAll('.tab');
+        const tabButtons = document.querySelectorAll('.tab_button');
+
+        tabs.forEach(tab => {
+            if (tab.id === tabId) {
+                tab.classList.add('active');
+                clearRepair(tab.id);
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+    }
+
+    // Disabling Datepicker
+    document.getElementById("datePicker_rep").valueAsDate = new Date();
+    document.getElementById("datePicker_rep").disabled = true;
+    document.getElementById("datePicker_svc").valueAsDate = new Date();
+    document.getElementById("datePicker_svc").disabled = true;
+
+</script>
+</body>
+</html>
